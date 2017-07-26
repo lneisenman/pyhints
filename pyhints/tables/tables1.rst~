@@ -1,0 +1,32 @@
+========
+Trivia 1
+========
+
+Using Pytables to save numpy arrays in chunks
+=============================================
+
+`Pytables <http://www.pytables.org/index.html>`_ is a package for reading and writing HDF5 files in Python. It can be used to store numpy arrays. It also allows reading data in chunks so that files that are too large to
+read into memory can be analysed.
+
+Here is a sample demonstrating how to read just part of an array into memory.
+
+.. code-block:: python3
+
+   import numpy as np
+   import tables as tbl
+
+   np.random.seed(1)
+   hfile = tbl.open_file('test3.h5', 'w')
+   data = np.random.randint(10, size=(5, 10))
+   hfile.create_array(hfile.root, 'array', data)
+   hfile.close()
+
+   hfile = tbl.open_file('test3.h5')
+   print(hfile.root.array.shape)
+   data2 = hfile.root.array.read(-2, hfile.root.array.shape[1])
+   print(data)
+   print()
+   print(data2)
+   hfile.close()
+
+

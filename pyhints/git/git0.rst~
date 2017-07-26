@@ -1,0 +1,9 @@
+================
+Mercurial Trivia
+================
+
+.. toctree::
+   :maxdepth: 2
+
+   Trivia 1 <hg1>
+   Trivia 2 <hg2>

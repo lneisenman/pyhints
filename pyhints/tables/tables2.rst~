@@ -1,0 +1,36 @@
+========
+Trivia 2
+========
+
+Using Pytables to save numpy arrays in chunks
+=============================================
+
+Here is a sample demonstrating how to write an array in chunks using `earray`. Note that there are different
+'atoms' for different data types. The axis along which the array will be expanded is initially given a dimension of zero. Expansion can only occur on a single axis.
+
+.. code-block:: python3
+
+   import numpy as np
+   import tables as tbl
+
+   np.random.seed(1)
+   hfile = tbl.open_file('test4.h5', 'w')
+   atom = tbl.Int8Atom()
+   array = hfile.create_earray(hfile.root, 'earray', atom, (0, 10))
+   data = np.random.randint(10, size=(5, 10))
+   array.append(data)
+   hfile.close()
+
+   hfile = tbl.open_file('test4.h5', 'a')
+   print(hfile.root.earray.shape)
+   data2 = hfile.root.earray.read(-2, hfile.root.earray.shape[1])
+   print(data, '\n')
+   print(data2, '\n')
+   hfile.root.earray.append(data2)
+   hfile.close()
+
+   hfile = tbl.open_file('test4.h5')
+   data3 = hfile.root.earray.read()
+   print(data3)
+   hfile.close()
+

@@ -1,0 +1,29 @@
+=======================================
+Numpy and Scipy Least Squares Fitting 5
+=======================================
+
+Least Squares Fitting with contrainsts using lmfit
+==================================================
+
+.. container:: codefile
+   
+   .. literalinclude:: code/use_lmfit.py
+      :language: py3
+      :linenos:
+
+
+Some Comments:
+
+   * The `Model` function in lmfit wraps our peval function and takes care of calculating residuals
+
+   * Instead of providing a list of parameters, we create a set of lmfit ``Parameters``. We can either use the method from Model as shown in line 23 or create our own as in lines 27-30
+
+   * Note that each parameter has a name that can be used to index the ``Parameters`` container and can have properties including ``min`` and ``max``.
+
+   * Another extremely useful feature is the ability to declare a parameter as fixed using the property ``vary=False``
+
+   * As shown on line 35, fitting is performed using the `Model.fit` function. 
+
+   * lmfit Model returns a ModelFit class with methods and attributes to access the fit result
+
+   * Unfortunately, lmfit seems to do less well than directly using scipy.optimize minimizers

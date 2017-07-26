@@ -1,0 +1,58 @@
+============
+Git Trivia 2
+============
+
+Create a feature branch and push it to the remote
+=================================================
+
+With git, the common approach to making changes is to create a feature branch for each change to protect the main code. When the branch is ready, it can be merged into master. If it ends up being a dead end, it is easy to start over from master with or without deleting the branch. Multiple different branchs can exist simultaneously to try different ideas::
+
+   git checkout -b new_feature master
+   git push -u origin new_feature
+   git push # for subsequent commits
+
+Merge a feature branch into master
+==================================
+
+Once the feature branch is done, it can be merged back into the master branch::
+
+   git checkout master
+   git merge new_feature
+   git push	# send to remote repository
+
+Once it is merged, the branch can be deleted if you wish
+
+Pull commits from an upstream repository
+========================================
+
+If your repository is a clone of another project and there are updates to the original project, you can pull them into your respository with::
+
+   git remote add upstream git://github.com/upstream/project	#this only needs to be done the first time
+   git checkout master
+   git pull upstream master
+   git push
+
+Abandon changes since last commit
+=================================
+
+If you want to start fresh from the last commit in a branch::
+
+   git reset --hard HEAD
+
+To reset a single file::
+
+   git checkout -- filename
+
+Delete a branch
+===============
+
+To delete a local branch::
+
+   git branch -d my_branch # only works if no uncommitted changes
+   git branch -D my_branch # will delete even if uncommitted changes. Permanently deletes the branch
+
+To delete a remote branch::
+
+   git push origin --delete my_branch
+
+
