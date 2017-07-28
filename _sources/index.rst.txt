@@ -18,3 +18,4 @@ doing in hopes of making them easier to find when I need to do them again.
    Sphinx Trivia <sphinx/sphinx0>
    Tox Trivia <tox/tox0>
    Pytables HDF5 Trivia <tables/tables0>
+   Pandas Trivia <pandas/pandas0>
