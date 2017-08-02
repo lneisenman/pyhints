@@ -28,5 +28,3 @@ The easiest way to customize Sphinx output is to modify the conf.py file.
 
    * control index generation
    * control footer properties
-
-* More stuff here???

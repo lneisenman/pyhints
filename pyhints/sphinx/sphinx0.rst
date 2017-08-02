@@ -6,4 +6,4 @@ Sphinx Trivia
    :maxdepth: 2
 
    Trivia 1 <sphinx1>
-   Trivia 2 <sphinx2>
+   Jupyter Notebooks <sphinx2>
