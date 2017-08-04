@@ -7,3 +7,4 @@ Sphinx Trivia
 
    Trivia 1 <sphinx1>
    Jupyter Notebooks <sphinx2>
+   Sphinx and Github <sphinx3>
