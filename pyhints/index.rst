@@ -15,7 +15,8 @@ doing in hopes of making them easier to find when I need to do them again.
    Python Trivia <python/python0>
    Numpy and Scipy Trivia <numpy/numpy0>
    Git Trivia <git/git0>
+   Matplotlib Trivia <matplotlib/plt0>
+   Pandas Trivia <pandas/pandas0>
    Sphinx Trivia <sphinx/sphinx0>
    Tox Trivia <tox/tox0>
    Pytables HDF5 Trivia <tables/tables0>
-   Pandas Trivia <pandas/pandas0>
