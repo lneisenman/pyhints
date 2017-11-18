@@ -1,5 +1,0 @@
-=========
-Trivia 2A
-=========
-
-a .rst file with Pandas trivia
