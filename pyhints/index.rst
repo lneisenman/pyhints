@@ -13,10 +13,25 @@ doing in hopes of making them easier to find when I need to do them again.
    :maxdepth: 2
 
    Python Trivia <python/python0>
-   Numpy and Scipy Trivia <numpy/numpy0>
-   Git Trivia <git/git0>
+   
+Packages
+++++++++
+   
+.. toctree::
+   :maxdepth: 2
+
    Matplotlib Trivia <matplotlib/plt0>
+   Numpy and Scipy Trivia <numpy/numpy0>
    Pandas Trivia <pandas/pandas0>
+   Pytables HDF5 Trivia <tables/tables0>
+   
+Tools
++++++
+   
+.. toctree::
+   :maxdepth: 2
+
+   Git Trivia <git/git0>
+   Grep Trivia <grep/grep0>
    Sphinx Trivia <sphinx/sphinx0>
    Tox Trivia <tox/tox0>
-   Pytables HDF5 Trivia <tables/tables0>
