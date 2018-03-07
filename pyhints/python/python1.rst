@@ -5,12 +5,24 @@ Python Trivia 1
 Tk file dialogs
 ===============
 
-Here is a simple way to use Tk to add open/save file dialogs
+Here is a simple way to use Tk to add open/save file dialogs in Python3
 
 .. code-block:: py3
 
-   import tkFileDialog
+   import os
+   import tkinter as tk
+   from tkinter import filedialog
 
+   root = tk.Tk()
+   root.withdraw()
+   
+   # get a directory
+   directory = filedialog.askdirectory()
+   
+   # get a list of the csv files in that directory
+   file_names = [f for f in os.listdir(directory) if f.endswith('.csv')]
+   file_name = os.path.join(directory, file_names[0])  # full path
+   
    # get a filename that you can open
    filename = tkFileDialog.askopenfilename(initialfile='data.dat', \
        filetypes=[('data', '*.dat'), ('csv', '*.csv')])
@@ -20,8 +32,10 @@ Here is a simple way to use Tk to add open/save file dialogs
        filetypes=[('data', '*.dat'), ('csv', '*.csv')])
 
    # use asksaveasfile/asksaveasfilename for files to write
+   
+   # make sure other windows work when finished
+   root.destroy()
 
-In Python3 the import is ``from tkinter import filedialog`` and then ``filedialog.askopenfilename()`` ....
 
 Here is some code that should work in either Python2 or Python3
 
@@ -29,14 +43,15 @@ Here is some code that should work in either Python2 or Python3
 
    try:
        #python3
+       import tkinter as tk
        from tkinter import filedialog
    except:
        #python2
+       import Tkinter as tk
        import tkFileDialog as filedialog
 
    filename = filedialog.askopenfilename(filetypes=[('csv','*.csv')])
 
-More information about parameters is available `here <http://tkinter.unpythonic.net/wiki/tkFileDialog>`_.
 
 
 TTK Demo 1
