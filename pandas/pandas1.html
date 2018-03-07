@@ -4,20 +4,12 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>Summarizing across multiple data frames &#8212; pyhints 0.1 documentation</title>
     <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <script type="text/javascript">
-      var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    '../',
-        VERSION:     '0.1',
-        COLLAPSE_INDEX: false,
-        FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true,
-        SOURCELINK_SUFFIX: '.txt'
-      };
-    </script>
+    <script type="text/javascript" src="../_static/documentation_options.js"></script>
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
@@ -32,8 +24,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
 
-  </head>
-  <body>
+  </head><body>
   
 
     <div class="document">
@@ -216,13 +207,13 @@ sem value. There are 4 readings from the plate. We want to be able to
 analyse data from each well. The question is how to deal with this 3-D
 data set using the 2-D dataframe in Pandas.</p>
 <p>We’ll start by creating some mock data where each experiment is in a
-dataframe and the dataframes are in a list called <code class="docutils literal"><span class="pre">data</span></code>.</p>
+dataframe and the dataframes are in a list called <code class="docutils literal notranslate"><span class="pre">data</span></code>.</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none"><div class="highlight"><pre>
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
 <span></span>In [1]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
@@ -240,15 +231,15 @@ dataframe and the dataframes are in a list called <code class="docutils literal"
 </div>
 <p>What we are going to do is to create a new dataframe with an additional
 field that we will call ‘trial’ and combine the data into that
-dataframe. Once the data is aggregated, we can use the <code class="docutils literal"><span class="pre">groupby</span></code> and
-<code class="docutils literal"><span class="pre">get_group</span></code> functions to pull out the data for each well. For this
+dataframe. Once the data is aggregated, we can use the <code class="docutils literal notranslate"><span class="pre">groupby</span></code> and
+<code class="docutils literal notranslate"><span class="pre">get_group</span></code> functions to pull out the data for each well. For this
 demonstration, we will just plot the data.</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none"><div class="highlight"><pre>
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
 <span></span>In [2]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3"><div class="highlight"><pre>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span><span class="n">summary</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span>
 <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">df</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
     <span class="n">df</span><span class="p">[</span><span class="s1">&#39;trial&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span>
@@ -288,8 +279,10 @@ demonstration, we will just plot the data.</p>
 
 
 <h3>Navigation</h3>
-<ul class="current">
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="../python/python0.html">Python Trivia</a></li>
+</ul>
+<ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../matplotlib/plt0.html">Matplotlib Trivia</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../numpy/numpy0.html">Numpy and Scipy Trivia</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="pandas0.html">Pandas Trivia</a><ul class="current">
@@ -298,10 +291,12 @@ demonstration, we will just plot the data.</p>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../tables/tables0.html">Pytables HDF5 Trivia</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../tox/tox0.html">Tox Trivia</a></li>
+</ul>
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="../git/git0.html">Git Trivia</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../grep/grep0.html">Grep Trivia</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../sphinx/sphinx0.html">Sphinx Trivia</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tox/tox0.html">Tox Trivia</a></li>
 </ul>
 
 <div class="relations">
@@ -317,12 +312,14 @@ demonstration, we will just plot the data.</p>
 </div>
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
+    <div class="searchformwrapper">
     <form class="search" action="../search.html" method="get">
-      <div><input type="text" name="q" /></div>
-      <div><input type="submit" value="Go" /></div>
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
+    </div>
 </div>
 <script type="text/javascript">$('#searchbox').show(0);</script>
         </div>
@@ -333,7 +330,7 @@ demonstration, we will just plot the data.</p>
       &copy;2018, Larry Eisenman.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.6.6</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.7.1</a>
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a>
       
       |

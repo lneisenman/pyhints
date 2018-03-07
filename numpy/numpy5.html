@@ -4,20 +4,12 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>Numpy and Scipy Least Squares Fitting 5 &#8212; pyhints 0.1 documentation</title>
     <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <script type="text/javascript">
-      var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    '../',
-        VERSION:     '0.1',
-        COLLAPSE_INDEX: false,
-        FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true,
-        SOURCELINK_SUFFIX: '.txt'
-      };
-    </script>
+    <script type="text/javascript" src="../_static/documentation_options.js"></script>
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
@@ -32,8 +24,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
 
-  </head>
-  <body>
+  </head><body>
   
 
     <div class="document">
@@ -46,7 +37,7 @@
 <div class="section" id="least-squares-fitting-with-contrainsts-using-lmfit">
 <h2>Least Squares Fitting with contrainsts using lmfit<a class="headerlink" href="#least-squares-fitting-with-contrainsts-using-lmfit" title="Permalink to this headline">¶</a></h2>
 <div class="codefile docutils container">
-<div class="highlight-py3"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+<div class="highlight-py3 notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
  2
  3
  4
@@ -156,9 +147,9 @@
 <blockquote>
 <div><ul class="simple">
 <li>The <cite>Model</cite> function in lmfit wraps our peval function and takes care of calculating residuals</li>
-<li>Instead of providing a list of parameters, we create a set of lmfit <code class="docutils literal"><span class="pre">Parameters</span></code>. We can either use the method from Model as shown in line 23 or create our own as in lines 27-30</li>
-<li>Note that each parameter has a name that can be used to index the <code class="docutils literal"><span class="pre">Parameters</span></code> container and can have properties including <code class="docutils literal"><span class="pre">min</span></code> and <code class="docutils literal"><span class="pre">max</span></code>.</li>
-<li>Another extremely useful feature is the ability to declare a parameter as fixed using the property <code class="docutils literal"><span class="pre">vary=False</span></code></li>
+<li>Instead of providing a list of parameters, we create a set of lmfit <code class="docutils literal notranslate"><span class="pre">Parameters</span></code>. We can either use the method from Model as shown in line 23 or create our own as in lines 27-30</li>
+<li>Note that each parameter has a name that can be used to index the <code class="docutils literal notranslate"><span class="pre">Parameters</span></code> container and can have properties including <code class="docutils literal notranslate"><span class="pre">min</span></code> and <code class="docutils literal notranslate"><span class="pre">max</span></code>.</li>
+<li>Another extremely useful feature is the ability to declare a parameter as fixed using the property <code class="docutils literal notranslate"><span class="pre">vary=False</span></code></li>
 <li>As shown on line 35, fitting is performed using the <cite>Model.fit</cite> function.</li>
 <li>lmfit Model returns a ModelFit class with methods and attributes to access the fit result</li>
 <li>Unfortunately, lmfit seems to do less well than directly using scipy.optimize minimizers</li>
@@ -183,8 +174,10 @@
 
 
 <h3>Navigation</h3>
-<ul class="current">
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="../python/python0.html">Python Trivia</a></li>
+</ul>
+<ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../matplotlib/plt0.html">Matplotlib Trivia</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="numpy0.html">Numpy and Scipy Trivia</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="numpy1.html">Numpy and Scipy Trivia 1</a></li>
@@ -196,10 +189,12 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../pandas/pandas0.html">Pandas Trivia</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../tables/tables0.html">Pytables HDF5 Trivia</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../tox/tox0.html">Tox Trivia</a></li>
+</ul>
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="../git/git0.html">Git Trivia</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../grep/grep0.html">Grep Trivia</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../sphinx/sphinx0.html">Sphinx Trivia</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tox/tox0.html">Tox Trivia</a></li>
 </ul>
 
 <div class="relations">
@@ -215,12 +210,14 @@
 </div>
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
+    <div class="searchformwrapper">
     <form class="search" action="../search.html" method="get">
-      <div><input type="text" name="q" /></div>
-      <div><input type="submit" value="Go" /></div>
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
+    </div>
 </div>
 <script type="text/javascript">$('#searchbox').show(0);</script>
         </div>
@@ -231,7 +228,7 @@
       &copy;2018, Larry Eisenman.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.6.6</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.7.1</a>
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a>
       
       |

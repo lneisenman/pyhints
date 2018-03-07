@@ -4,20 +4,12 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>Python Trivia 1 &#8212; pyhints 0.1 documentation</title>
     <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <script type="text/javascript">
-      var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    '../',
-        VERSION:     '0.1',
-        COLLAPSE_INDEX: false,
-        FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true,
-        SOURCELINK_SUFFIX: '.txt'
-      };
-    </script>
+    <script type="text/javascript" src="../_static/documentation_options.js"></script>
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
@@ -32,8 +24,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
 
-  </head>
-  <body>
+  </head><body>
   
 
     <div class="document">
@@ -45,8 +36,20 @@
 <h1>Python Trivia 1<a class="headerlink" href="#python-trivia-1" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="tk-file-dialogs">
 <h2>Tk file dialogs<a class="headerlink" href="#tk-file-dialogs" title="Permalink to this headline">¶</a></h2>
-<p>Here is a simple way to use Tk to add open/save file dialogs</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">tkFileDialog</span>
+<p>Here is a simple way to use Tk to add open/save file dialogs in Python3</p>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">tkinter</span> <span class="k">as</span> <span class="nn">tk</span>
+<span class="kn">from</span> <span class="nn">tkinter</span> <span class="k">import</span> <span class="n">filedialog</span>
+
+<span class="n">root</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Tk</span><span class="p">()</span>
+<span class="n">root</span><span class="o">.</span><span class="n">withdraw</span><span class="p">()</span>
+
+<span class="c1"># get a directory</span>
+<span class="n">directory</span> <span class="o">=</span> <span class="n">filedialog</span><span class="o">.</span><span class="n">askdirectory</span><span class="p">()</span>
+
+<span class="c1"># get a list of the csv files in that directory</span>
+<span class="n">file_names</span> <span class="o">=</span> <span class="p">[</span><span class="n">f</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">directory</span><span class="p">)</span> <span class="k">if</span> <span class="n">f</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s1">&#39;.csv&#39;</span><span class="p">)]</span>
+<span class="n">file_name</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">directory</span><span class="p">,</span> <span class="n">file_names</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>  <span class="c1"># full path</span>
 
 <span class="c1"># get a filename that you can open</span>
 <span class="n">filename</span> <span class="o">=</span> <span class="n">tkFileDialog</span><span class="o">.</span><span class="n">askopenfilename</span><span class="p">(</span><span class="n">initialfile</span><span class="o">=</span><span class="s1">&#39;data.dat&#39;</span><span class="p">,</span> \
@@ -57,25 +60,28 @@
     <span class="n">filetypes</span><span class="o">=</span><span class="p">[(</span><span class="s1">&#39;data&#39;</span><span class="p">,</span> <span class="s1">&#39;*.dat&#39;</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;csv&#39;</span><span class="p">,</span> <span class="s1">&#39;*.csv&#39;</span><span class="p">)])</span>
 
 <span class="c1"># use asksaveasfile/asksaveasfilename for files to write</span>
+
+<span class="c1"># make sure other windows work when finished</span>
+<span class="n">root</span><span class="o">.</span><span class="n">destroy</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>In Python3 the import is <code class="docutils literal"><span class="pre">from</span> <span class="pre">tkinter</span> <span class="pre">import</span> <span class="pre">filedialog</span></code> and then <code class="docutils literal"><span class="pre">filedialog.askopenfilename()</span></code> ….</p>
 <p>Here is some code that should work in either Python2 or Python3</p>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="k">try</span><span class="p">:</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="k">try</span><span class="p">:</span>
     <span class="c1">#python3</span>
+    <span class="kn">import</span> <span class="nn">tkinter</span> <span class="k">as</span> <span class="nn">tk</span>
     <span class="kn">from</span> <span class="nn">tkinter</span> <span class="k">import</span> <span class="n">filedialog</span>
 <span class="k">except</span><span class="p">:</span>
     <span class="c1">#python2</span>
+    <span class="kn">import</span> <span class="nn">Tkinter</span> <span class="k">as</span> <span class="nn">tk</span>
     <span class="kn">import</span> <span class="nn">tkFileDialog</span> <span class="k">as</span> <span class="nn">filedialog</span>
 
 <span class="n">filename</span> <span class="o">=</span> <span class="n">filedialog</span><span class="o">.</span><span class="n">askopenfilename</span><span class="p">(</span><span class="n">filetypes</span><span class="o">=</span><span class="p">[(</span><span class="s1">&#39;csv&#39;</span><span class="p">,</span><span class="s1">&#39;*.csv&#39;</span><span class="p">)])</span>
 </pre></div>
 </div>
-<p>More information about parameters is available <a class="reference external" href="http://tkinter.unpythonic.net/wiki/tkFileDialog">here</a>.</p>
 </div>
 <div class="section" id="ttk-demo-1">
 <h2>TTK Demo 1<a class="headerlink" href="#ttk-demo-1" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">tkinter</span> <span class="k">import</span> <span class="o">*</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">tkinter</span> <span class="k">import</span> <span class="o">*</span>
 <span class="kn">from</span> <span class="nn">tkinter</span> <span class="k">import</span> <span class="n">ttk</span>
 <span class="n">root</span> <span class="o">=</span> <span class="n">Tk</span><span class="p">()</span>
 <span class="n">button</span> <span class="o">=</span> <span class="n">ttk</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">&quot;Hello World&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
@@ -85,7 +91,7 @@
 </div>
 <div class="section" id="ttk-demo-2">
 <h2>TTK Demo 2<a class="headerlink" href="#ttk-demo-2" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">tkinter</span> <span class="k">import</span> <span class="o">*</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">tkinter</span> <span class="k">import</span> <span class="o">*</span>
 <span class="kn">from</span> <span class="nn">tkinter</span> <span class="k">import</span> <span class="n">ttk</span>
 
 <span class="k">def</span> <span class="nf">calculate</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">):</span>
@@ -127,7 +133,7 @@
 </div>
 <div class="section" id="ttk-demo-3">
 <h2>TTK Demo 3<a class="headerlink" href="#ttk-demo-3" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-py3"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">tkinter</span> <span class="k">import</span> <span class="o">*</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">tkinter</span> <span class="k">import</span> <span class="o">*</span>
 <span class="kn">from</span> <span class="nn">tkinter</span> <span class="k">import</span> <span class="n">ttk</span>
 
 <span class="n">root</span> <span class="o">=</span> <span class="n">Tk</span><span class="p">()</span>
@@ -188,14 +194,18 @@
 <li class="toctree-l2"><a class="reference internal" href="python2.html">Python Trivia 2</a></li>
 </ul>
 </li>
+</ul>
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="../matplotlib/plt0.html">Matplotlib Trivia</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../numpy/numpy0.html">Numpy and Scipy Trivia</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../pandas/pandas0.html">Pandas Trivia</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../tables/tables0.html">Pytables HDF5 Trivia</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../tox/tox0.html">Tox Trivia</a></li>
+</ul>
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="../git/git0.html">Git Trivia</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../grep/grep0.html">Grep Trivia</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../sphinx/sphinx0.html">Sphinx Trivia</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tox/tox0.html">Tox Trivia</a></li>
 </ul>
 
 <div class="relations">
@@ -211,12 +221,14 @@
 </div>
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
+    <div class="searchformwrapper">
     <form class="search" action="../search.html" method="get">
-      <div><input type="text" name="q" /></div>
-      <div><input type="submit" value="Go" /></div>
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
+    </div>
 </div>
 <script type="text/javascript">$('#searchbox').show(0);</script>
         </div>
@@ -227,7 +239,7 @@
       &copy;2018, Larry Eisenman.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.6.6</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.7.1</a>
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a>
       
       |

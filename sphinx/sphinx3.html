@@ -4,26 +4,19 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>Using Sphinx with Github Pages &#8212; pyhints 0.1 documentation</title>
     <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <script type="text/javascript">
-      var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    '../',
-        VERSION:     '0.1',
-        COLLAPSE_INDEX: false,
-        FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true,
-        SOURCELINK_SUFFIX: '.txt'
-      };
-    </script>
+    <script type="text/javascript" src="../_static/documentation_options.js"></script>
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Tox Trivia" href="../tox/tox0.html" />
     <link rel="prev" title="Using Jupyter notebooks in Sphinx" href="sphinx2.html" />
    
   <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
@@ -31,8 +24,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
 
-  </head>
-  <body>
+  </head><body>
   
 
     <div class="document">
@@ -50,17 +42,17 @@ in the master branch of your github repo. After you build the website you can
 use the <a class="reference external" href="https://github.com/davisp/ghp-import">ghp-import</a> tool to put your
 html output into the gh-pages branch and push to github.</p>
 <p>First install <cite>ghp-import</cite></p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>pip install ghp-import
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip install ghp-import
 </pre></div>
 </div>
 <p>Then add content to the website and commit</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>git add .
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git add .
 git commit -m <span class="s2">&quot;added content&quot;</span>
 git push origin master
 </pre></div>
 </div>
 <p>Now build the website and push to gh-pages.</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="nb">cd</span> project
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> project
 make html
 <span class="nb">cd</span> ..
 ghp-import project/_build/html
@@ -87,13 +79,16 @@ publishing <a class="reference external" href="https://blog.getpelican.com/">Pel
 
 
 <h3>Navigation</h3>
-<ul class="current">
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="../python/python0.html">Python Trivia</a></li>
+</ul>
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="../matplotlib/plt0.html">Matplotlib Trivia</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../numpy/numpy0.html">Numpy and Scipy Trivia</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../pandas/pandas0.html">Pandas Trivia</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../tables/tables0.html">Pytables HDF5 Trivia</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../tox/tox0.html">Tox Trivia</a></li>
+</ul>
+<ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../git/git0.html">Git Trivia</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../grep/grep0.html">Grep Trivia</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="sphinx0.html">Sphinx Trivia</a><ul class="current">
@@ -102,6 +97,7 @@ publishing <a class="reference external" href="https://blog.getpelican.com/">Pel
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Sphinx and Github</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="../tox/tox0.html">Tox Trivia</a></li>
 </ul>
 
 <div class="relations">
@@ -110,18 +106,21 @@ publishing <a class="reference external" href="https://blog.getpelican.com/">Pel
   <li><a href="../index.html">Documentation overview</a><ul>
   <li><a href="sphinx0.html">Sphinx Trivia</a><ul>
       <li>Previous: <a href="sphinx2.html" title="previous chapter">Using Jupyter notebooks in Sphinx</a></li>
+      <li>Next: <a href="../tox/tox0.html" title="next chapter">Tox Trivia</a></li>
   </ul></li>
   </ul></li>
 </ul>
 </div>
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
+    <div class="searchformwrapper">
     <form class="search" action="../search.html" method="get">
-      <div><input type="text" name="q" /></div>
-      <div><input type="submit" value="Go" /></div>
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
+    </div>
 </div>
 <script type="text/javascript">$('#searchbox').show(0);</script>
         </div>
@@ -132,7 +131,7 @@ publishing <a class="reference external" href="https://blog.getpelican.com/">Pel
       &copy;2018, Larry Eisenman.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.6.6</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.7.1</a>
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a>
       
       |
