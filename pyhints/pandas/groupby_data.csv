@@ -1,0 +1,17 @@
+animal,genotype,condition,measurement,value
+1,WT,baseline,1,0.9
+1,WT,baseline,2,1.1
+1,WT,treatment,1,1.8
+1,WT,treatment,2,2.2
+2,WT,baseline,1,0.8
+2,WT,baseline,2,1.2
+2,WT,treatment,1,1.6
+2,WT,treatment,2,2.4
+3,mutant,baseline,1,1.8
+3,mutant,baseline,2,2.2
+3,mutant,treatment,1,1.6
+3,mutant,treatment,2,2.4
+4,mutant,baseline,1,1.8
+4,mutant,baseline,2,2.2
+4,mutant,treatment,1,1.6
+4,mutant,treatment,2,2.4
