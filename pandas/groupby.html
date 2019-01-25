@@ -88,18 +88,18 @@ div.nblast {
 
 /* input prompt */
 div.nbinput div.prompt pre {
-    color: #303F9F;
+    color: #307FC1;
 }
 
 /* output prompt */
 div.nboutput div.prompt pre {
-    color: #D84315;
+    color: #BF5B3D;
 }
 
 /* all prompts */
 div.nbinput div.prompt,
 div.nboutput div.prompt {
-    min-width: 8ex;
+    min-width: 5ex;
     padding-top: 0.4em;
     padding-right: 0.4em;
     text-align: right;
@@ -139,9 +139,9 @@ div.nboutput div.output_area {
 
 /* input area */
 div.nbinput div.input_area {
-    border: 1px solid #cfcfcf;
+    border: 1px solid #e0e0e0;
     border-radius: 2px;
-    background: #f7f7f7;
+    background: #f5f5f5;
 }
 
 /* override MathJax center alignment in output cells */
@@ -149,7 +149,7 @@ div.nboutput div[class*=MathJax] {
     text-align: left !important;
 }
 
-/* override sphinx.ext.pngmath center alignment in output cells */
+/* override sphinx.ext.imgmath center alignment in output cells */
 div.nboutput div.math p {
     text-align: left;
 }
@@ -198,16 +198,46 @@ div.nboutput div.output_area.stderr {
 
 .ansi-bold { font-weight: bold; }
 .ansi-underline { text-decoration: underline; }
+
+/* Some additional styling taken form the Jupyter notebook CSS */
+div.rendered_html table {
+  border: none;
+  border-collapse: collapse;
+  border-spacing: 0;
+  color: black;
+  font-size: 12px;
+  table-layout: fixed;
+}
+div.rendered_html thead {
+  border-bottom: 1px solid black;
+  vertical-align: bottom;
+}
+div.rendered_html tr,
+div.rendered_html th,
+div.rendered_html td {
+  text-align: right;
+  vertical-align: middle;
+  padding: 0.5em 0.5em;
+  line-height: normal;
+  white-space: normal;
+  max-width: none;
+  border: none;
+}
+div.rendered_html th {
+  font-weight: bold;
+}
+div.rendered_html tbody tr:nth-child(odd) {
+  background: #f5f5f5;
+}
+div.rendered_html tbody tr:hover {
+  background: rgba(66, 165, 245, 0.2);
+}
 </style>
 <div class="section" id="Organizing-data-with-the-Pandas-groupby-function">
 <h1>Organizing data with the Pandas <em>groupby</em> function<a class="headerlink" href="#Organizing-data-with-the-Pandas-groupby-function" title="Permalink to this headline">¶</a></h1>
-<p>For this example we will assume and experiment comparing the effect of a
-drug on wildtype and mutant animal. There are two measurements for each
-animal prior to and after drug treatment. We will start with the data in
-<a class="reference external" href="https://en.wikipedia.org/wiki/Tidy_data">tidy format</a></p>
+<p>For this example we will assume and experiment comparing the effect of a drug on wildtype and mutant animal. There are two measurements for each animal prior to and after drug treatment. We will start with the data in <a class="reference external" href="https://en.wikipedia.org/wiki/Tidy_data">tidy format</a></p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [1]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -221,8 +251,7 @@ animal prior to and after drug treatment. We will start with the data in
 </div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [2]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -244,14 +273,9 @@ animal prior to and after drug treatment. We will start with the data in
 4       2       WT   baseline            1    0.8
 </pre></div></div>
 </div>
-<p>We’d like to compare treatment to baseline in both the WT and mutant
-animals. The <a class="reference external" href="https://pandas.pydata.org/">Pandas</a> <em>groupby</em> function
-will organize the data for us and the resulting data structure has a
-<em>get_group</em> function that will allow us to access the data for each of
-the four groups</p>
+<p>We’d like to compare treatment to baseline in both the WT and mutant animals. The <a class="reference external" href="https://pandas.pydata.org/">Pandas</a> <em>groupby</em> function will organize the data for us and the resulting data structure has a <em>get_group</em> function that will allow us to access the data for each of the four groups</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [3]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -273,20 +297,10 @@ the four groups</p>
 5       2       WT  baseline            2    1.2
 </pre></div></div>
 </div>
-<p>The <em>groupby</em> data structure has
-<a class="reference external" href="http://pandas.pydata.org/pandas-docs/stable/groupby.html#groupby-object-attributes">methods</a>
-for basic data analysis. We could use the <em>mean</em> and <em>std</em> methods which
-generate new dataframes, each with a
-<a class="reference external" href="http://pandas.pydata.org/pandas-docs/stable/advanced.html">multiIndex</a>.
-In these dataframes, the value column now represents the mean (std) of
-the corresponding category of animals. However, there is an <em>agg</em>
-function that creates a single dataframe with columns corresponding to
-an arbitrary list of functions. We’ll use it with both the <em>mean</em> and
-<em>std</em> functions. With the multiIndex, accessing sections of the data is
-relatively easy.</p>
+<p>The <em>groupby</em> data structure has <a class="reference external" href="http://pandas.pydata.org/pandas-docs/stable/groupby.html#groupby-object-attributes">methods</a> for basic data analysis. We could use the <em>mean</em> and <em>std</em> methods which generate new dataframes, each with a <a class="reference external" href="http://pandas.pydata.org/pandas-docs/stable/advanced.html">multiIndex</a>. In these dataframes, the value column now represents the mean (std) of the corresponding category of animals. However, there is an <em>agg</em> function that creates a single dataframe with
+columns corresponding to an arbitrary list of functions. We’ll use it with both the <em>mean</em> and <em>std</em> functions. With the multiIndex, accessing sections of the data is relatively easy.</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [4]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -331,8 +345,7 @@ Name: std, dtype: float64
 </pre></div></div>
 </div>
 <div class="nboutput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>Out[4]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
@@ -347,15 +360,10 @@ Name: std, dtype: float64
 <img alt="../_images/pandas_groupby_7_2.png" src="../_images/pandas_groupby_7_2.png" />
 </div>
 </div>
-<p>In some cases, it is better to create dataframes with labelled columns
-rather than a MultiIndex. For example, categorical plots in
-<a class="reference external" href="https://seaborn.pydata.org/">Seaborn</a> work better without the
-MultiIndex.</p>
-<p>This can be accomplished by passing the parameter <em>as_index=False</em> to
-the <em>groupby</em> function</p>
+<p>In some cases, it is better to create dataframes with labelled columns rather than a MultiIndex. For example, categorical plots in <a class="reference external" href="https://seaborn.pydata.org/">Seaborn</a> work better without the MultiIndex.</p>
+<p>This can be accomplished by passing the parameter <em>as_index=False</em> to the <em>groupby</em> function</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [5]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -378,8 +386,7 @@ the <em>groupby</em> function</p>
 </pre></div></div>
 </div>
 <div class="nboutput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>Out[5]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
@@ -394,11 +401,9 @@ the <em>groupby</em> function</p>
 <img alt="../_images/pandas_groupby_9_2.png" src="../_images/pandas_groupby_9_2.png" />
 </div>
 </div>
-<p>If the dataframe has already been created with a MultiIndex, the
-<em>reset_index</em> method can be used to go back to labelled columns</p>
+<p>If the dataframe has already been created with a MultiIndex, the <em>reset_index</em> method can be used to go back to labelled columns</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [6]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -428,8 +433,7 @@ mutant   baseline    2.0  0.230940
 </pre></div></div>
 </div>
 <div class="nboutput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>Out[6]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
@@ -444,12 +448,9 @@ mutant   baseline    2.0  0.230940
 <img alt="../_images/pandas_groupby_11_2.png" src="../_images/pandas_groupby_11_2.png" />
 </div>
 </div>
-<p>Of course, if all you wanted were the graphs,
-<a class="reference external" href="https://seaborn.pydata.org/">Seaborn</a> can do that without any of the
-above analysis</p>
+<p>Of course, if all you wanted were the graphs, <a class="reference external" href="https://seaborn.pydata.org/">Seaborn</a> can do that without any of the above analysis</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>In [7]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -462,15 +463,14 @@ above analysis</p>
 <div class="nboutput docutils container">
 <div class="prompt empty docutils container">
 </div>
-<div class="stderr output_area docutils container">
+<div class="output_area stderr docutils container">
 <div class="highlight"><pre>
 C:\Users\eisenmanl\AppData\Local\Continuum\miniconda3\lib\site-packages\scipy\stats\stats.py:1713: FutureWarning: Using a non-tuple sequence for multidimensional indexing is deprecated; use `arr[tuple(seq)]` instead of `arr[seq]`. In the future this will be interpreted as an array index, `arr[np.array(seq)]`, which will result either in an error or a different result.
   return np.add.reduce(sorted[indexer] * weights, axis=axis) / sumval
 </pre></div></div>
 </div>
 <div class="nboutput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre>
-<span></span>Out[7]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
 </pre></div>
 </div>
 <div class="output_area highlight-none notranslate"><div class="highlight"><pre>
@@ -483,6 +483,15 @@ C:\Users\eisenmanl\AppData\Local\Continuum\miniconda3\lib\site-packages\scipy\st
 </div>
 <div class="output_area docutils container">
 <img alt="../_images/pandas_groupby_13_2.png" src="../_images/pandas_groupby_13_2.png" />
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span>
+</pre></div>
 </div>
 </div>
 </div>
@@ -562,7 +571,7 @@ C:\Users\eisenmanl\AppData\Local\Continuum\miniconda3\lib\site-packages\scipy\st
       <div class="clearer"></div>
     </div>
     <div class="footer">
-      &copy;2018, Larry Eisenman.
+      &copy;2019, Larry Eisenman.
       
       |
       Powered by <a href="http://sphinx-doc.org/">Sphinx 1.8.2</a>
