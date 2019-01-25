@@ -48,7 +48,7 @@ master_doc = 'index'
 
 # General information about the project.
 project = 'pyhints'
-copyright = '2018, Larry Eisenman'
+copyright = '2019, Larry Eisenman'
 author = 'Larry Eisenman'
 
 # The version info for the project you're documenting, acts as replacement for
