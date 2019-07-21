@@ -1,11 +1,9 @@
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
     <title>Numpy and Scipy Least Squares Fitting 5 &#8212; pyhints 0.1 documentation</title>
     <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -13,6 +11,7 @@
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/language_data.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Pandas Trivia" href="../pandas/pandas0.html" />
@@ -147,13 +146,13 @@
 <p>Some Comments:</p>
 <blockquote>
 <div><ul class="simple">
-<li>The <cite>Model</cite> function in lmfit wraps our peval function and takes care of calculating residuals</li>
-<li>Instead of providing a list of parameters, we create a set of lmfit <code class="docutils literal notranslate"><span class="pre">Parameters</span></code>. We can either use the method from Model as shown in line 23 or create our own as in lines 27-30</li>
-<li>Note that each parameter has a name that can be used to index the <code class="docutils literal notranslate"><span class="pre">Parameters</span></code> container and can have properties including <code class="docutils literal notranslate"><span class="pre">min</span></code> and <code class="docutils literal notranslate"><span class="pre">max</span></code>.</li>
-<li>Another extremely useful feature is the ability to declare a parameter as fixed using the property <code class="docutils literal notranslate"><span class="pre">vary=False</span></code></li>
-<li>As shown on line 35, fitting is performed using the <cite>Model.fit</cite> function.</li>
-<li>lmfit Model returns a ModelFit class with methods and attributes to access the fit result</li>
-<li>Unfortunately, lmfit seems to do less well than directly using scipy.optimize minimizers</li>
+<li><p>The <cite>Model</cite> function in lmfit wraps our peval function and takes care of calculating residuals</p></li>
+<li><p>Instead of providing a list of parameters, we create a set of lmfit <code class="docutils literal notranslate"><span class="pre">Parameters</span></code>. We can either use the method from Model as shown in line 23 or create our own as in lines 27-30</p></li>
+<li><p>Note that each parameter has a name that can be used to index the <code class="docutils literal notranslate"><span class="pre">Parameters</span></code> container and can have properties including <code class="docutils literal notranslate"><span class="pre">min</span></code> and <code class="docutils literal notranslate"><span class="pre">max</span></code>.</p></li>
+<li><p>Another extremely useful feature is the ability to declare a parameter as fixed using the property <code class="docutils literal notranslate"><span class="pre">vary=False</span></code></p></li>
+<li><p>As shown on line 35, fitting is performed using the <cite>Model.fit</cite> function.</p></li>
+<li><p>lmfit Model returns a ModelFit class with methods and attributes to access the fit result</p></li>
+<li><p>Unfortunately, lmfit seems to do less well than directly using scipy.optimize minimizers</p></li>
 </ul>
 </div></blockquote>
 </div>
@@ -211,13 +210,11 @@
 </ul>
 </div>
 <div id="searchbox" style="display: none" role="search">
-  <h3>Quick search</h3>
+  <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" />
+      <input type="text" name="q" aria-labelledby="searchlabel" />
       <input type="submit" value="Go" />
-      <input type="hidden" name="check_keywords" value="yes" />
-      <input type="hidden" name="area" value="default" />
     </form>
     </div>
 </div>
@@ -238,7 +235,7 @@
       &copy;2019, Larry Eisenman.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.8.2</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 2.1.2</a>
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
       
       |

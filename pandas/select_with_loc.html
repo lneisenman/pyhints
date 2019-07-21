@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta charset="utf-8" />
-    <title>Summarizing across multiple data frames with Xarray &#8212; pyhints 0.1 documentation</title>
+    <title>Selecting rows based on the values in a specific column &#8212; pyhints 0.1 documentation</title>
     <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
@@ -14,8 +14,8 @@
     <script type="text/javascript" src="../_static/language_data.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Pytables Trivia" href="../tables/tables0.html" />
-    <link rel="prev" title="Summarizing across multiple data frames" href="pandas1.html" />
+    <link rel="next" title="Organizing data with the Pandas groupby function" href="groupby.html" />
+    <link rel="prev" title="Read data files into pandas dataframes" href="read_data.html" />
    
   <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
   
@@ -232,50 +232,21 @@ div.rendered_html tbody tr:hover {
   background: rgba(66, 165, 245, 0.2);
 }
 </style>
-<div class="section" id="Summarizing-across-multiple-data-frames-with-Xarray">
-<h1>Summarizing across multiple data frames with Xarray<a class="headerlink" href="#Summarizing-across-multiple-data-frames-with-Xarray" title="Permalink to this headline">¶</a></h1>
-<p>The problem: Experimental data from a series of readings from a plate is contained in a set of <a class="reference external" href="http://pandas.pydata.org/">Pandas</a> dataframes. For each of 4 wells (A, B, C and D) on the plate, there is a mean and sem value. There are 4 readings from the plate. We want to be able to analyse data from each well. The question is how to deal with this 3-D data set using <a class="reference external" href="http://xarray.pydata.org/en/stable/">Xarray</a>, which is now considered to be the N-dimensional version of Pandas and replaces
-the Panel data structure that Pandas previously used for 3d data.</p>
-<p>We’ll start by creating some mock data where each experiment is in a dataframe and the dataframes are in a list called <code class="docutils literal notranslate"><span class="pre">data</span></code>.</p>
-<div class="nbinput nblast docutils container">
+<div class="section" id="Selecting-rows-based-on-the-values-in-a-specific-column">
+<h1>Selecting rows based on the values in a specific column<a class="headerlink" href="#Selecting-rows-based-on-the-values-in-a-specific-column" title="Permalink to this headline">¶</a></h1>
+<p>Suppose there is a dataframe with three columns X, Y and Z and you need to find the value of Z in the column where X has a specific value. This can be done with the <code class="docutils literal notranslate"><span class="pre">.loc</span></code> method. Lets create some data to demonstrate.</p>
+<div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="kn">import</span> <span class="nn">xarray</span> <span class="k">as</span> <span class="nn">xr</span>
+<span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 
-<span class="n">data</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
-<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">):</span>
-    <span class="n">mean</span> <span class="o">=</span> <span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
-    <span class="n">sem</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
-    <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="s1">&#39;C&#39;</span><span class="p">,</span> <span class="s1">&#39;D&#39;</span><span class="p">])</span>
-    <span class="n">df</span><span class="p">[</span><span class="s1">&#39;mean&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">mean</span>
-    <span class="n">df</span><span class="p">[</span><span class="s1">&#39;sem&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">sem</span>
-    <span class="n">data</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<p>What we are going to do is to convert the dataframes to Xarray DataArrays. Then we will use the <code class="docutils literal notranslate"><span class="pre">concat</span></code> function to combine into a single DataArray. Once the data is in a single DataArray, we can access whichever subset of the data we wish using dictionaries. For this demonstration, we will just plot the data.</p>
-<div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
-</pre></div>
-</div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">exp_list</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
-<span class="n">labels</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
-<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">df</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
-    <span class="n">array</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">DataArray</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">dims</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;well&#39;</span><span class="p">,</span> <span class="s1">&#39;param&#39;</span><span class="p">])</span>
-    <span class="n">exp_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">array</span><span class="p">)</span>
-    <span class="n">labels</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;exp&#39;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">))</span>
-
-<span class="n">combined</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span><span class="n">exp_list</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">Index</span><span class="p">(</span><span class="n">labels</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;exp&#39;</span><span class="p">))</span>
-<span class="n">mean</span> <span class="o">=</span> <span class="n">combined</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="nb">dict</span><span class="p">(</span><span class="n">well</span><span class="o">=</span><span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="n">param</span><span class="o">=</span><span class="s1">&#39;mean&#39;</span><span class="p">)]</span>
-<span class="n">sem</span> <span class="o">=</span> <span class="n">combined</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="nb">dict</span><span class="p">(</span><span class="n">well</span><span class="o">=</span><span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="n">param</span><span class="o">=</span><span class="s1">&#39;sem&#39;</span><span class="p">)]</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">mean</span><span class="p">)),</span> <span class="n">mean</span><span class="p">,</span> <span class="n">yerr</span><span class="o">=</span><span class="n">sem</span><span class="p">,</span> <span class="n">tick_label</span><span class="o">=</span><span class="n">labels</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;X&#39;</span><span class="p">,</span> <span class="s1">&#39;Y&#39;</span><span class="p">,</span> <span class="s1">&#39;Z&#39;</span><span class="p">])</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;X&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="s1">&#39;C&#39;</span><span class="p">]</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;Y&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;Z&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="s1">&#39;green&#39;</span><span class="p">,</span> <span class="s1">&#39;blue&#39;</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
 </pre></div>
 </div>
 </div>
@@ -283,7 +254,103 @@ the Panel data structure that Pandas previously used for 3d data.</p>
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/pandas_pandas2_5_0.png" src="../_images/pandas_pandas2_5_0.png" />
+<div class="highlight"><pre>
+   X  Y      Z
+0  A  1    red
+1  B  2  green
+2  C  3   blue
+</pre></div></div>
+</div>
+<p>So now lets find the value of Z in the row where X is “B”. Note the brackets around “Z”</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;X&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;Z&#39;</span><span class="p">]])</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+       Z
+1  green
+</pre></div></div>
+</div>
+<p>Lets change that to purple</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;X&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;Z&#39;</span><span class="p">]]</span> <span class="o">=</span> <span class="s1">&#39;purple&#39;</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;X&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;Z&#39;</span><span class="p">]])</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+        Z
+1  purple
+</pre></div></div>
+</div>
+<p>Now lets change the value of Z in the row where X is “C” to be equal to the value of Z where X is “B”</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;X&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;C&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;Z&#39;</span><span class="p">]]</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;X&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;Z&#39;</span><span class="p">]]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+   X  Y       Z
+0  A  1     red
+1  B  2  purple
+2  C  3     NaN
+</pre></div></div>
+</div>
+<p>Oops. That didn’t work as expected. Here is the trick. We need to use the <code class="docutils literal notranslate"><span class="pre">values</span></code> attribute.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;X&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;C&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;Z&#39;</span><span class="p">]]</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;X&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;Z&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">values</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+   X  Y       Z
+0  A  1     red
+1  B  2  purple
+2  C  3  purple
+</pre></div></div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span>
+</pre></div>
 </div>
 </div>
 </div>
@@ -313,10 +380,10 @@ the Panel data structure that Pandas previously used for 3d data.</p>
 <li class="toctree-l1"><a class="reference internal" href="../numpy/numpy0.html">Numpy and Scipy Trivia</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="pandas0.html">Pandas Trivia</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="read_data.html">Read data files into pandas dataframes</a></li>
-<li class="toctree-l2"><a class="reference internal" href="select_with_loc.html">Selecting rows based on the values in a specific column</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Selecting rows based on the values in a specific column</a></li>
 <li class="toctree-l2"><a class="reference internal" href="groupby.html">Organizing data with the Pandas <em>groupby</em> function</a></li>
 <li class="toctree-l2"><a class="reference internal" href="pandas1.html">Summarizing across multiple data frames</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Summarizing across multiple data frames with Xarray</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pandas2.html">Summarizing across multiple data frames with Xarray</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../tables/tables0.html">Pytables HDF5 Trivia</a></li>
@@ -333,8 +400,8 @@ the Panel data structure that Pandas previously used for 3d data.</p>
 <ul>
   <li><a href="../index.html">Documentation overview</a><ul>
   <li><a href="pandas0.html">Pandas Trivia</a><ul>
-      <li>Previous: <a href="pandas1.html" title="previous chapter">Summarizing across multiple data frames</a></li>
-      <li>Next: <a href="../tables/tables0.html" title="next chapter">Pytables Trivia</a></li>
+      <li>Previous: <a href="read_data.html" title="previous chapter">Read data files into pandas dataframes</a></li>
+      <li>Next: <a href="groupby.html" title="next chapter">Organizing data with the Pandas <em>groupby</em> function</a></li>
   </ul></li>
   </ul></li>
 </ul>
@@ -369,7 +436,7 @@ the Panel data structure that Pandas previously used for 3d data.</p>
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
       
       |
-      <a href="../_sources/pandas/pandas2.ipynb.txt"
+      <a href="../_sources/pandas/select_with_loc.ipynb.txt"
           rel="nofollow">Page source</a>
     </div>
 

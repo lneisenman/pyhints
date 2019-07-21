@@ -1,11 +1,9 @@
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
     <title>Numpy and Scipy Least Squares Fitting 1 &#8212; pyhints 0.1 documentation</title>
     <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -13,6 +11,7 @@
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/language_data.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Numpy and Scipy Least Squares Fitting 5" href="numpy5.html" />
@@ -115,9 +114,9 @@
 <p>Some Comments:</p>
 <blockquote>
 <div><ul class="simple">
-<li>This is my revised version of the least squares demo from the Scipy docs</li>
-<li>To use <cite>scipy.optimize.leastsq</cite>, you need to create a function to be fit that is called a set of x-values and a set of parameters as shown in line 11. In this case, the fitting function is a sinusoidal function.</li>
-<li>You then need a function that calculates the residuals corresponding to each value of x. As shown on line 15, this function receives the parameters, the target of the fit and the x-values</li>
+<li><p>This is my revised version of the least squares demo from the Scipy docs</p></li>
+<li><p>To use <cite>scipy.optimize.leastsq</cite>, you need to create a function to be fit that is called a set of x-values and a set of parameters as shown in line 11. In this case, the fitting function is a sinusoidal function.</p></li>
+<li><p>You then need a function that calculates the residuals corresponding to each value of x. As shown on line 15, this function receives the parameters, the target of the fit and the x-values</p></li>
 </ul>
 </div></blockquote>
 </div>
@@ -191,8 +190,8 @@
 <p>Some Comments:</p>
 <blockquote>
 <div><ul class="simple">
-<li>The curve_fit function provides a nice wrapper for leastsq</li>
-<li>Note that we no longer need the residual function</li>
+<li><p>The curve_fit function provides a nice wrapper for leastsq</p></li>
+<li><p>Note that we no longer need the residual function</p></li>
 </ul>
 </div></blockquote>
 </div>
@@ -326,10 +325,10 @@
 <p>Some Comments:</p>
 <blockquote>
 <div><ul class="simple">
-<li>This extends the least squares example to demonstrate the use of <cite>scipy.optimize.minimize</cite> and the <cite>SLSQP</cite> algorithm to perform a least squares fit with constraints on the ranges of the parameters</li>
-<li>Unlike <cite>leastsq</cite>, <cite>minimize</cite> requires you to provide a function that actually calculates the error from the residual. This is implemented here in the cost function defined on line 20.</li>
-<li>Compare the fits over multiple runs and you should see times when <cite>leastsq</cite> and <cite>SLSQP</cite> without constraints give negative amplitudes for A or shifts &gt; 2pi on the x-axis with theta.</li>
-<li>You’ll also see times when all of the fitting functions give bad fits. Tighter bounds on the parameters may decrease the likelihood of a bad fit but of course, you can’t always provide tigher bounds.</li>
+<li><p>This extends the least squares example to demonstrate the use of <cite>scipy.optimize.minimize</cite> and the <cite>SLSQP</cite> algorithm to perform a least squares fit with constraints on the ranges of the parameters</p></li>
+<li><p>Unlike <cite>leastsq</cite>, <cite>minimize</cite> requires you to provide a function that actually calculates the error from the residual. This is implemented here in the cost function defined on line 20.</p></li>
+<li><p>Compare the fits over multiple runs and you should see times when <cite>leastsq</cite> and <cite>SLSQP</cite> without constraints give negative amplitudes for A or shifts &gt; 2pi on the x-axis with theta.</p></li>
+<li><p>You’ll also see times when all of the fitting functions give bad fits. Tighter bounds on the parameters may decrease the likelihood of a bad fit but of course, you can’t always provide tigher bounds.</p></li>
 </ul>
 </div></blockquote>
 </div>
@@ -387,13 +386,11 @@
 </ul>
 </div>
 <div id="searchbox" style="display: none" role="search">
-  <h3>Quick search</h3>
+  <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" />
+      <input type="text" name="q" aria-labelledby="searchlabel" />
       <input type="submit" value="Go" />
-      <input type="hidden" name="check_keywords" value="yes" />
-      <input type="hidden" name="area" value="default" />
     </form>
     </div>
 </div>
@@ -414,7 +411,7 @@
       &copy;2019, Larry Eisenman.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.8.2</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 2.1.2</a>
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
       
       |

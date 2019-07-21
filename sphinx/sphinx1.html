@@ -1,11 +1,9 @@
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
     <title>Trivia 1 &#8212; pyhints 0.1 documentation</title>
     <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -13,6 +11,7 @@
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/language_data.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Using Jupyter notebooks in Sphinx" href="sphinx2.html" />
@@ -39,43 +38,37 @@
 <h2>Customizing Sphinx Output<a class="headerlink" href="#customizing-sphinx-output" title="Permalink to this headline">¶</a></h2>
 <p>The easiest way to customize Sphinx output is to modify the conf.py file.</p>
 <ul>
-<li><p class="first">In the general configuration section you can:</p>
+<li><p>In the general configuration section you can:</p>
 <blockquote>
 <div><ul>
-<li><p class="first">Change the project name</p>
-</li>
-<li><p class="first">Update the copyright</p>
-</li>
-<li><p class="first">update the version</p>
-</li>
-<li><div class="first admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">The variable <code class="docutils literal notranslate"><span class="pre">pygments_style</span></code> is set to ‘sphinx’ in this section automatically. If you want to create a theme that uses a different style, you need to comment this line to allow the theme to control the style. Alternatively, you can set the pygments style to whatever you like using this variable.</p>
+<li><p>Change the project name</p></li>
+<li><p>Update the copyright</p></li>
+<li><p>update the version</p></li>
+<li><div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The variable <code class="docutils literal notranslate"><span class="pre">pygments_style</span></code> is set to ‘sphinx’ in this section automatically. If you want to create a theme that uses a different style, you need to comment this line to allow the theme to control the style. Alternatively, you can set the pygments style to whatever you like using this variable.</p>
 </div>
 </li>
 </ul>
 </div></blockquote>
 </li>
-<li><p class="first">In the html configuration section you can:</p>
+<li><p>In the html configuration section you can:</p>
 <blockquote>
 <div><ul>
-<li><p class="first">select a theme for the overall format of your output and set options if any are available. If you use a custom theme, make sure to set the <code class="docutils literal notranslate"><span class="pre">html_theme_path</span></code> variable to include the path of the theme</p>
-</li>
-<li><p class="first">customize your sidebars by uncommenting and filling in the <code class="docutils literal notranslate"><span class="pre">html_sidebars</span></code> variable. The standard sidebar includes items like</p>
+<li><p>select a theme for the overall format of your output and set options if any are available. If you use a custom theme, make sure to set the <code class="docutils literal notranslate"><span class="pre">html_theme_path</span></code> variable to include the path of the theme</p></li>
+<li><p>customize your sidebars by uncommenting and filling in the <code class="docutils literal notranslate"><span class="pre">html_sidebars</span></code> variable. The standard sidebar includes items like</p>
 <blockquote>
 <div><ul class="simple">
-<li>‘localtoc.html’ which gives a TOC</li>
-<li>‘relations.html’ which gives you the previous and next choices</li>
-<li>‘sourcelink.html’ which gives you the link to the sourcefile</li>
-<li>‘searchbox.html’ which give the search box</li>
-<li>you can also include custom templates</li>
+<li><p>‘localtoc.html’ which gives a TOC</p></li>
+<li><p>‘relations.html’ which gives you the previous and next choices</p></li>
+<li><p>‘sourcelink.html’ which gives you the link to the sourcefile</p></li>
+<li><p>‘searchbox.html’ which give the search box</p></li>
+<li><p>you can also include custom templates</p></li>
 </ul>
 </div></blockquote>
 </li>
-<li><p class="first">control index generation</p>
-</li>
-<li><p class="first">control footer properties</p>
-</li>
+<li><p>control index generation</p></li>
+<li><p>control footer properties</p></li>
 </ul>
 </div></blockquote>
 </li>
@@ -133,13 +126,11 @@
 </ul>
 </div>
 <div id="searchbox" style="display: none" role="search">
-  <h3>Quick search</h3>
+  <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" />
+      <input type="text" name="q" aria-labelledby="searchlabel" />
       <input type="submit" value="Go" />
-      <input type="hidden" name="check_keywords" value="yes" />
-      <input type="hidden" name="area" value="default" />
     </form>
     </div>
 </div>
@@ -160,7 +151,7 @@
       &copy;2019, Larry Eisenman.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.8.2</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 2.1.2</a>
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
       
       |
