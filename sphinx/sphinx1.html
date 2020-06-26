@@ -1,27 +1,19 @@
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
   <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Trivia 1 &#8212; pyhints 0.1 documentation</title>
     <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <script type="text/javascript">
-      var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    '../',
-        VERSION:     '0.1',
-        COLLAPSE_INDEX: false,
-        FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true,
-        SOURCELINK_SUFFIX: '.txt'
-      };
-    </script>
-    <script type="text/javascript" src="../_static/jquery.js"></script>
-    <script type="text/javascript" src="../_static/underscore.js"></script>
-    <script type="text/javascript" src="../_static/doctools.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Using Jupyter notebooks in Sphinx" href="sphinx2.html" />
@@ -32,13 +24,14 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
 
-  </head>
-  <body>
+  </head><body>
   
 
     <div class="document">
       <div class="documentwrapper">
         <div class="bodywrapper">
+          
+
           <div class="body" role="main">
             
   <div class="section" id="trivia-1">
@@ -47,43 +40,37 @@
 <h2>Customizing Sphinx Output<a class="headerlink" href="#customizing-sphinx-output" title="Permalink to this headline">¶</a></h2>
 <p>The easiest way to customize Sphinx output is to modify the conf.py file.</p>
 <ul>
-<li><p class="first">In the general configuration section you can:</p>
+<li><p>In the general configuration section you can:</p>
 <blockquote>
 <div><ul>
-<li><p class="first">Change the project name</p>
-</li>
-<li><p class="first">Update the copyright</p>
-</li>
-<li><p class="first">update the version</p>
-</li>
-<li><div class="first admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">The variable <code class="docutils literal"><span class="pre">pygments_style</span></code> is set to ‘sphinx’ in this section automatically. If you want to create a theme that uses a different style, you need to comment this line to allow the theme to control the style. Alternatively, you can set the pygments style to whatever you like using this variable.</p>
+<li><p>Change the project name</p></li>
+<li><p>Update the copyright</p></li>
+<li><p>update the version</p></li>
+<li><div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The variable <code class="docutils literal notranslate"><span class="pre">pygments_style</span></code> is set to ‘sphinx’ in this section automatically. If you want to create a theme that uses a different style, you need to comment this line to allow the theme to control the style. Alternatively, you can set the pygments style to whatever you like using this variable.</p>
 </div>
 </li>
 </ul>
 </div></blockquote>
 </li>
-<li><p class="first">In the html configuration section you can:</p>
+<li><p>In the html configuration section you can:</p>
 <blockquote>
 <div><ul>
-<li><p class="first">select a theme for the overall format of your output and set options if any are available. If you use a custom theme, make sure to set the <code class="docutils literal"><span class="pre">html_theme_path</span></code> variable to include the path of the theme</p>
-</li>
-<li><p class="first">customize your sidebars by uncommenting and filling in the <code class="docutils literal"><span class="pre">html_sidebars</span></code> variable. The standard sidebar includes items like</p>
+<li><p>select a theme for the overall format of your output and set options if any are available. If you use a custom theme, make sure to set the <code class="docutils literal notranslate"><span class="pre">html_theme_path</span></code> variable to include the path of the theme</p></li>
+<li><p>customize your sidebars by uncommenting and filling in the <code class="docutils literal notranslate"><span class="pre">html_sidebars</span></code> variable. The standard sidebar includes items like</p>
 <blockquote>
 <div><ul class="simple">
-<li>‘localtoc.html’ which gives a TOC</li>
-<li>‘relations.html’ which gives you the previous and next choices</li>
-<li>‘sourcelink.html’ which gives you the link to the sourcefile</li>
-<li>‘searchbox.html’ which give the search box</li>
-<li>you can also include custom templates</li>
+<li><p>‘localtoc.html’ which gives a TOC</p></li>
+<li><p>‘relations.html’ which gives you the previous and next choices</p></li>
+<li><p>‘sourcelink.html’ which gives you the link to the sourcefile</p></li>
+<li><p>‘searchbox.html’ which give the search box</p></li>
+<li><p>you can also include custom templates</p></li>
 </ul>
 </div></blockquote>
 </li>
-<li><p class="first">control index generation</p>
-</li>
-<li><p class="first">control footer properties</p>
-</li>
+<li><p>control index generation</p></li>
+<li><p>control footer properties</p></li>
 </ul>
 </div></blockquote>
 </li>
@@ -93,6 +80,7 @@
 
 
           </div>
+          
         </div>
       </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
@@ -107,12 +95,18 @@
 
 
 <h3>Navigation</h3>
-<ul class="current">
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="../python/python0.html">Python Trivia</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../numpy/numpy0.html">Numpy and Scipy Trivia</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../git/git0.html">Git Trivia</a></li>
+</ul>
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="../matplotlib/plt0.html">Matplotlib Trivia</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../numpy/numpy0.html">Numpy and Scipy Trivia</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../pandas/pandas0.html">Pandas Trivia</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tables/tables0.html">Pytables HDF5 Trivia</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../git/git0.html">Git Trivia</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../grep/grep0.html">Grep Trivia</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="sphinx0.html">Sphinx Trivia</a><ul class="current">
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Trivia 1</a></li>
 <li class="toctree-l2"><a class="reference internal" href="sphinx2.html">Jupyter Notebooks</a></li>
@@ -120,7 +114,6 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../tox/tox0.html">Tox Trivia</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../tables/tables0.html">Pytables HDF5 Trivia</a></li>
 </ul>
 
 <div class="relations">
@@ -135,25 +128,33 @@
 </ul>
 </div>
 <div id="searchbox" style="display: none" role="search">
-  <h3>Quick search</h3>
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
     <form class="search" action="../search.html" method="get">
-      <div><input type="text" name="q" /></div>
-      <div><input type="submit" value="Go" /></div>
-      <input type="hidden" name="check_keywords" value="yes" />
-      <input type="hidden" name="area" value="default" />
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
     </form>
+    </div>
 </div>
-<script type="text/javascript">$('#searchbox').show(0);</script>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
         </div>
       </div>
       <div class="clearer"></div>
     </div>
     <div class="footer">
-      &copy;2017, Larry Eisenman.
+      &copy;2020, Larry Eisenman.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.6.3</a>
-      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 3.1.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
       
       |
       <a href="../_sources/sphinx/sphinx1.rst.txt"

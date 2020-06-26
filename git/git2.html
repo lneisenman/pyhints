@@ -1,33 +1,22 @@
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
   <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Git Trivia 2 &#8212; pyhints 0.1 documentation</title>
-    
     <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    
-    <script type="text/javascript">
-      var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    '../',
-        VERSION:     '0.1',
-        COLLAPSE_INDEX: false,
-        FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true,
-        SOURCELINK_SUFFIX: '.txt'
-      };
-    </script>
-    <script type="text/javascript" src="../_static/jquery.js"></script>
-    <script type="text/javascript" src="../_static/underscore.js"></script>
-    <script type="text/javascript" src="../_static/doctools.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Sphinx Trivia" href="../sphinx/sphinx0.html" />
+    <link rel="next" title="Grep Trivia" href="../grep/grep0.html" />
     <link rel="prev" title="Git Trivia 1" href="git1.html" />
    
   <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
@@ -35,13 +24,14 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
 
-  </head>
-  <body>
+  </head><body>
   
 
     <div class="document">
       <div class="documentwrapper">
         <div class="bodywrapper">
+          
+
           <div class="body" role="main">
             
   <div class="section" id="git-trivia-2">
@@ -49,7 +39,7 @@
 <div class="section" id="create-a-feature-branch-and-push-it-to-the-remote">
 <h2>Create a feature branch and push it to the remote<a class="headerlink" href="#create-a-feature-branch-and-push-it-to-the-remote" title="Permalink to this headline">¶</a></h2>
 <p>With git, the common approach to making changes is to create a feature branch for each change to protect the main code. When the branch is ready, it can be merged into master. If it ends up being a dead end, it is easy to start over from master with or without deleting the branch. Multiple different branchs can exist simultaneously to try different ideas:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">checkout</span> <span class="o">-</span><span class="n">b</span> <span class="n">new_feature</span> <span class="n">master</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">checkout</span> <span class="o">-</span><span class="n">b</span> <span class="n">new_feature</span> <span class="n">master</span>
 <span class="n">git</span> <span class="n">push</span> <span class="o">-</span><span class="n">u</span> <span class="n">origin</span> <span class="n">new_feature</span>
 <span class="n">git</span> <span class="n">push</span> <span class="c1"># for subsequent commits</span>
 </pre></div>
@@ -58,7 +48,7 @@
 <div class="section" id="merge-a-feature-branch-into-master">
 <h2>Merge a feature branch into master<a class="headerlink" href="#merge-a-feature-branch-into-master" title="Permalink to this headline">¶</a></h2>
 <p>Once the feature branch is done, it can be merged back into the master branch:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">checkout</span> <span class="n">master</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">checkout</span> <span class="n">master</span>
 <span class="n">git</span> <span class="n">merge</span> <span class="n">new_feature</span>
 <span class="n">git</span> <span class="n">push</span>     <span class="c1"># send to remote repository</span>
 </pre></div>
@@ -68,7 +58,7 @@
 <div class="section" id="pull-commits-from-an-upstream-repository">
 <h2>Pull commits from an upstream repository<a class="headerlink" href="#pull-commits-from-an-upstream-repository" title="Permalink to this headline">¶</a></h2>
 <p>If your repository is a clone of another project and there are updates to the original project, you can pull them into your respository with:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">remote</span> <span class="n">add</span> <span class="n">upstream</span> <span class="n">git</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">upstream</span><span class="o">/</span><span class="n">project</span>    <span class="c1">#this only needs to be done the first time</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">remote</span> <span class="n">add</span> <span class="n">upstream</span> <span class="n">git</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">upstream</span><span class="o">/</span><span class="n">project</span>    <span class="c1">#this only needs to be done the first time</span>
 <span class="n">git</span> <span class="n">checkout</span> <span class="n">master</span>
 <span class="n">git</span> <span class="n">pull</span> <span class="n">upstream</span> <span class="n">master</span>
 <span class="n">git</span> <span class="n">push</span>
@@ -78,30 +68,30 @@
 <div class="section" id="abandon-changes-since-last-commit">
 <h2>Abandon changes since last commit<a class="headerlink" href="#abandon-changes-since-last-commit" title="Permalink to this headline">¶</a></h2>
 <p>If you want to start fresh from the last commit in a branch:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">reset</span> <span class="o">--</span><span class="n">hard</span> <span class="n">HEAD</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">reset</span> <span class="o">--</span><span class="n">hard</span> <span class="n">HEAD</span>
 </pre></div>
 </div>
 <p>To reset a single file:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">checkout</span> <span class="o">--</span> <span class="n">filename</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">checkout</span> <span class="o">--</span> <span class="n">filename</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="delete-a-branch">
 <h2>Delete a branch<a class="headerlink" href="#delete-a-branch" title="Permalink to this headline">¶</a></h2>
 <p>To delete a local branch:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">branch</span> <span class="o">-</span><span class="n">d</span> <span class="n">my_branch</span> <span class="c1"># only works if no uncommitted changes</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">branch</span> <span class="o">-</span><span class="n">d</span> <span class="n">my_branch</span> <span class="c1"># only works if no uncommitted changes</span>
 <span class="n">git</span> <span class="n">branch</span> <span class="o">-</span><span class="n">D</span> <span class="n">my_branch</span> <span class="c1"># will delete even if uncommitted changes. Permanently deletes the branch</span>
 </pre></div>
 </div>
 <p>To delete a remote branch:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">push</span> <span class="n">origin</span> <span class="o">--</span><span class="n">delete</span> <span class="n">my_branch</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">push</span> <span class="n">origin</span> <span class="o">--</span><span class="n">delete</span> <span class="n">my_branch</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="removing-tags">
 <h2>Removing tags<a class="headerlink" href="#removing-tags" title="Permalink to this headline">¶</a></h2>
 <p>To remove a tag:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">tag</span> <span class="o">-</span><span class="n">d</span> <span class="n">release01</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">tag</span> <span class="o">-</span><span class="n">d</span> <span class="n">release01</span>
 <span class="n">git</span> <span class="n">push</span> <span class="n">origin</span> <span class="p">:</span><span class="n">refs</span><span class="o">/</span><span class="n">tags</span><span class="o">/</span><span class="n">release01</span>
 </pre></div>
 </div>
@@ -110,6 +100,7 @@
 
 
           </div>
+          
         </div>
       </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
@@ -124,18 +115,24 @@
 
 
 <h3>Navigation</h3>
-<ul class="current">
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="../python/python0.html">Python Trivia</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../matplotlib/plt0.html">Matplotlib Trivia</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../numpy/numpy0.html">Numpy and Scipy Trivia</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pandas/pandas0.html">Pandas Trivia</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tables/tables0.html">Pytables HDF5 Trivia</a></li>
+</ul>
+<ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="git0.html">Git Trivia</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="git1.html">Trivia 1</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Trivia 2</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="../grep/grep0.html">Grep Trivia</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../sphinx/sphinx0.html">Sphinx Trivia</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../tox/tox0.html">Tox Trivia</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../tables/tables0.html">Pytables HDF5 Trivia</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../pandas/pandas0.html">Pandas Trivia</a></li>
 </ul>
 
 <div class="relations">
@@ -144,31 +141,39 @@
   <li><a href="../index.html">Documentation overview</a><ul>
   <li><a href="git0.html">Git Trivia</a><ul>
       <li>Previous: <a href="git1.html" title="previous chapter">Git Trivia 1</a></li>
-      <li>Next: <a href="../sphinx/sphinx0.html" title="next chapter">Sphinx Trivia</a></li>
+      <li>Next: <a href="../grep/grep0.html" title="next chapter">Grep Trivia</a></li>
   </ul></li>
   </ul></li>
 </ul>
 </div>
 <div id="searchbox" style="display: none" role="search">
-  <h3>Quick search</h3>
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
     <form class="search" action="../search.html" method="get">
-      <div><input type="text" name="q" /></div>
-      <div><input type="submit" value="Go" /></div>
-      <input type="hidden" name="check_keywords" value="yes" />
-      <input type="hidden" name="area" value="default" />
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
     </form>
+    </div>
 </div>
-<script type="text/javascript">$('#searchbox').show(0);</script>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
         </div>
       </div>
       <div class="clearer"></div>
     </div>
     <div class="footer">
-      &copy;2017, Larry Eisenman.
+      &copy;2020, Larry Eisenman.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.6.2</a>
-      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 3.1.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
       
       |
       <a href="../_sources/git/git2.rst.txt"
