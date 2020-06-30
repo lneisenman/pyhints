@@ -9,6 +9,7 @@ Some random Pandas stuff
 
    read_data.ipynb
    select_with_loc.ipynb
+   tidy.ipynb
    groupby.ipynb
    pandas1.ipynb
    pandas2.ipynb

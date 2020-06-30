@@ -1,17 +1,19 @@
 
 <!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
   <head>
     <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Python Trivia 1 &#8212; pyhints 0.1 documentation</title>
     <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-    <script type="text/javascript" src="../_static/jquery.js"></script>
-    <script type="text/javascript" src="../_static/underscore.js"></script>
-    <script type="text/javascript" src="../_static/doctools.js"></script>
-    <script type="text/javascript" src="../_static/language_data.js"></script>
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Python Trivia 2" href="python2.html" />
@@ -39,7 +41,7 @@
 <p>Here is a simple way to use Tk to add open/save file dialogs in Python3</p>
 <div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
 <span class="kn">import</span> <span class="nn">tkinter</span> <span class="k">as</span> <span class="nn">tk</span>
-<span class="kn">from</span> <span class="nn">tkinter</span> <span class="k">import</span> <span class="n">filedialog</span>
+<span class="kn">from</span> <span class="nn">tkinter</span> <span class="kn">import</span> <span class="n">filedialog</span>
 
 <span class="n">root</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Tk</span><span class="p">()</span>
 <span class="n">root</span><span class="o">.</span><span class="n">withdraw</span><span class="p">()</span>
@@ -69,7 +71,7 @@
 <div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="k">try</span><span class="p">:</span>
     <span class="c1">#python3</span>
     <span class="kn">import</span> <span class="nn">tkinter</span> <span class="k">as</span> <span class="nn">tk</span>
-    <span class="kn">from</span> <span class="nn">tkinter</span> <span class="k">import</span> <span class="n">filedialog</span>
+    <span class="kn">from</span> <span class="nn">tkinter</span> <span class="kn">import</span> <span class="n">filedialog</span>
 <span class="k">except</span><span class="p">:</span>
     <span class="c1">#python2</span>
     <span class="kn">import</span> <span class="nn">Tkinter</span> <span class="k">as</span> <span class="nn">tk</span>
@@ -81,8 +83,8 @@
 </div>
 <div class="section" id="ttk-demo-1">
 <h2>TTK Demo 1<a class="headerlink" href="#ttk-demo-1" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">tkinter</span> <span class="k">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">tkinter</span> <span class="k">import</span> <span class="n">ttk</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">tkinter</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">tkinter</span> <span class="kn">import</span> <span class="n">ttk</span>
 <span class="n">root</span> <span class="o">=</span> <span class="n">Tk</span><span class="p">()</span>
 <span class="n">button</span> <span class="o">=</span> <span class="n">ttk</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">&quot;Hello World&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
 <span class="n">root</span><span class="o">.</span><span class="n">mainloop</span><span class="p">()</span>
@@ -91,8 +93,8 @@
 </div>
 <div class="section" id="ttk-demo-2">
 <h2>TTK Demo 2<a class="headerlink" href="#ttk-demo-2" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">tkinter</span> <span class="k">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">tkinter</span> <span class="k">import</span> <span class="n">ttk</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">tkinter</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">tkinter</span> <span class="kn">import</span> <span class="n">ttk</span>
 
 <span class="k">def</span> <span class="nf">calculate</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">):</span>
         <span class="k">try</span><span class="p">:</span>
@@ -133,8 +135,8 @@
 </div>
 <div class="section" id="ttk-demo-3">
 <h2>TTK Demo 3<a class="headerlink" href="#ttk-demo-3" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">tkinter</span> <span class="k">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">tkinter</span> <span class="k">import</span> <span class="n">ttk</span>
+<div class="highlight-py3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">tkinter</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">tkinter</span> <span class="kn">import</span> <span class="n">ttk</span>
 
 <span class="n">root</span> <span class="o">=</span> <span class="n">Tk</span><span class="p">()</span>
 
@@ -229,7 +231,7 @@
     </form>
     </div>
 </div>
-<script type="text/javascript">$('#searchbox').show(0);</script>
+<script>$('#searchbox').show(0);</script>
 
 
 
@@ -243,10 +245,10 @@
       <div class="clearer"></div>
     </div>
     <div class="footer">
-      &copy;2019, Larry Eisenman.
+      &copy;2020, Larry Eisenman.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 2.1.2</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 3.1.1</a>
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
       
       |
