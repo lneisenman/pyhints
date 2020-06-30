@@ -1,0 +1,36 @@
+========
+Trivia 3
+========
+
+Creating a table with an array as a cell
+========================================
+
+The Pytables tutorial shows how to create a table with multple cells per row. However, it is not immediately clear
+how to create a cell which is an array. Here is an example.
+
+.. code-block:: python3
+
+   import numpy as np
+   import tables as tbl
+
+   class Hclass2(tbl.IsDescription):
+       var2 = tbl.Int8Col(shape=10)
+
+   hfile = tbl.open_file('test2.h5', 'w')
+   table = hfile.create_table(hfile.root, 'var2', Hclass2, 'test2')
+   row = table.row
+   for i in range(10):
+       dummy = np.asarray(range(10), dtype=np.int8) * i
+       print(i, dummy)
+       row['var2'] = dummy
+       row.append()
+
+   table.flush()
+   hfile.close()
+
+   hfile = tbl.open_file('test2.h5')
+   data = hfile.root.var2.read()
+   print(data)
+   hfile.close()
+
+

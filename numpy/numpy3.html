@@ -1,0 +1,151 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Numpy and Scipy Statistics &#8212; pyhints 0.1 documentation</title>
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Numpy and Scipy Least Squares Fitting 1" href="numpy4.html" />
+    <link rel="prev" title="Numpy and Scipy Trivia #2" href="numpy2.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="numpy-and-scipy-statistics">
+<h1>Numpy and Scipy Statistics<a class="headerlink" href="#numpy-and-scipy-statistics" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="basic-stats">
+<h2>Basic Stats<a class="headerlink" href="#basic-stats" title="Permalink to this headline">¶</a></h2>
+<p>Mean: <code class="docutils literal notranslate"><span class="pre">np.average()</span></code> or <code class="docutils literal notranslate"><span class="pre">np.mean()</span></code></p>
+<p>Standard Deviation: <code class="docutils literal notranslate"><span class="pre">np.std()</span></code></p>
+<p>Variance: <code class="docutils literal notranslate"><span class="pre">np.var()</span></code></p>
+<p>Maximim: <code class="docutils literal notranslate"><span class="pre">np.max()</span></code></p>
+<p>Minimum: <code class="docutils literal notranslate"><span class="pre">np.min()</span></code></p>
+<p>Sum: <code class="docutils literal notranslate"><span class="pre">np.sum()</span></code></p>
+<p>Cumulative Sum: <code class="docutils literal notranslate"><span class="pre">np.cumsum()</span></code></p>
+</div>
+<div class="section" id="t-tests">
+<h2>t-tests<a class="headerlink" href="#t-tests" title="Permalink to this headline">¶</a></h2>
+<p>Computing t-tests requires importing Scipy.stats (<code class="docutils literal notranslate"><span class="pre">from</span> <span class="pre">scipy</span> <span class="pre">import</span> <span class="pre">stats</span></code>)</p>
+<p>For a one sample t-test (two-tailed): <code class="docutils literal notranslate"><span class="pre">t_stat,</span> <span class="pre">p_value</span> <span class="pre">=</span> <span class="pre">stats.ttest_1samp(values,</span> <span class="pre">expected_mean)</span></code></p>
+<p>For a two sample t-test (two-tailed): <code class="docutils literal notranslate"><span class="pre">t_stat,</span> <span class="pre">p_value</span> <span class="pre">=</span> <span class="pre">stats.ttest_ind(values1,</span> <span class="pre">values2)</span></code></p>
+<p>For a two sample repeated measures t-test (two-tailed): <code class="docutils literal notranslate"><span class="pre">t_stat,</span> <span class="pre">p_value</span> <span class="pre">=</span> <span class="pre">stats.ttest_rel(values1,</span> <span class="pre">values2)</span></code></p>
+</div>
+<div class="section" id="other-tests">
+<h2>Other tests<a class="headerlink" href="#other-tests" title="Permalink to this headline">¶</a></h2>
+<p>For other tests, try the <a class="reference external" href="http://docs.scipy.org/doc/scipy/reference/stats.html">Scipy Statistics</a> docs.</p>
+</div>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">pyhints</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../python/python0.html">Python Trivia</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../matplotlib/plt0.html">Matplotlib Trivia</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="numpy0.html">Numpy and Scipy Trivia</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="numpy1.html">Numpy and Scipy Trivia 1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="numpy2.html">Numpy and Scipy Trivia 2</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Numpy and Scipy Statistics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="numpy4.html">Numpy and Scipy Least Squares Fitting 1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="numpy5.html">Numpy and Scipy Least Squares Fitting 2</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../pandas/pandas0.html">Pandas Trivia</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tables/tables0.html">Pytables HDF5 Trivia</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../git/git0.html">Git Trivia</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../grep/grep0.html">Grep Trivia</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sphinx/sphinx0.html">Sphinx Trivia</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tox/tox0.html">Tox Trivia</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+  <li><a href="numpy0.html">Numpy and Scipy Trivia</a><ul>
+      <li>Previous: <a href="numpy2.html" title="previous chapter">Numpy and Scipy Trivia #2</a></li>
+      <li>Next: <a href="numpy4.html" title="next chapter">Numpy and Scipy Least Squares Fitting 1</a></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2020, Larry Eisenman.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 3.1.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="../_sources/numpy/numpy3.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

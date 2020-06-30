@@ -1,0 +1,10 @@
+=================
+Matplotlib Trivia
+=================
+
+Some random `Matplotlib <https://matplotlib.org/index.html>`_ stuff
+
+.. toctree::
+   :maxdepth: 2
+
+   plt1.ipynb

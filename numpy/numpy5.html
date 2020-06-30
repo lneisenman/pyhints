@@ -1,0 +1,252 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Numpy and Scipy Least Squares Fitting 5 &#8212; pyhints 0.1 documentation</title>
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Pandas Trivia" href="../pandas/pandas0.html" />
+    <link rel="prev" title="Numpy and Scipy Least Squares Fitting 1" href="numpy4.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="numpy-and-scipy-least-squares-fitting-5">
+<h1>Numpy and Scipy Least Squares Fitting 5<a class="headerlink" href="#numpy-and-scipy-least-squares-fitting-5" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="least-squares-fitting-with-contrainsts-using-lmfit">
+<h2>Least Squares Fitting with contrainsts using lmfit<a class="headerlink" href="#least-squares-fitting-with-contrainsts-using-lmfit" title="Permalink to this headline">¶</a></h2>
+<div class="codefile docutils container">
+<div class="highlight-py3 notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="c1"># -*- coding: utf-8 -*-</span>
+
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="p">(</span><span class="n">print_function</span><span class="p">,</span> <span class="n">unicode_literals</span><span class="p">,</span>
+                        <span class="n">division</span><span class="p">,</span> <span class="n">absolute_import</span><span class="p">)</span>
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">lmfit</span> <span class="k">as</span> <span class="nn">lmf</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+
+<span class="k">def</span> <span class="nf">peval</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">theta</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">A</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">((</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">k</span> <span class="o">*</span> <span class="n">x</span><span class="p">)</span> <span class="o">+</span> <span class="n">theta</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">print_params</span><span class="p">(</span><span class="n">params</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">param</span> <span class="ow">in</span> <span class="n">params</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="s2">&quot;=&quot;</span><span class="p">,</span> <span class="n">param</span><span class="o">.</span><span class="n">value</span><span class="p">)</span>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">peval_model</span> <span class="o">=</span> <span class="n">lmf</span><span class="o">.</span><span class="n">Model</span><span class="p">(</span><span class="n">peval</span><span class="p">)</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">6e-2</span><span class="p">,</span> <span class="mf">6e-2</span> <span class="o">/</span> <span class="mi">30</span><span class="p">)</span>
+    <span class="n">p</span> <span class="o">=</span> <span class="n">peval_model</span><span class="o">.</span><span class="n">make_params</span><span class="p">(</span><span class="n">A</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="mi">1</span><span class="o">/</span><span class="mf">3.2e-2</span><span class="p">,</span> <span class="n">theta</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="mi">6</span><span class="p">)</span>
+    <span class="n">y_true</span> <span class="o">=</span> <span class="n">peval_model</span><span class="o">.</span><span class="n">eval</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">x</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="n">p</span><span class="p">)</span>
+    <span class="n">y_meas</span> <span class="o">=</span> <span class="n">y_true</span> <span class="o">+</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+
+    <span class="n">p0</span> <span class="o">=</span> <span class="n">lmf</span><span class="o">.</span><span class="n">Parameters</span><span class="p">()</span>
+    <span class="n">p0</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="nb">min</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
+    <span class="n">p0</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="mi">1</span><span class="o">/</span><span class="mf">2.3e-2</span><span class="p">,</span> <span class="nb">min</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">60</span><span class="p">)</span>
+    <span class="n">p0</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">&#39;theta&#39;</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="mi">3</span><span class="p">,</span> <span class="nb">min</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;initial guess&quot;</span><span class="p">)</span>
+    <span class="n">print_params</span><span class="p">(</span><span class="n">p0</span><span class="p">)</span>
+
+    <span class="n">fit</span> <span class="o">=</span> <span class="n">peval_model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">y_meas</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="n">p0</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="n">x</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">fit</span><span class="o">.</span><span class="n">success</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">()</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;fitted parameters&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">fit</span><span class="o">.</span><span class="n">best_values</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">()</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;fit failed&#39;</span><span class="p">,</span> <span class="n">fit</span><span class="o">.</span><span class="n">message</span><span class="p">)</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;True parameters&quot;</span><span class="p">)</span>
+    <span class="n">print_params</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
+
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">peval</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="o">**</span><span class="n">fit</span><span class="o">.</span><span class="n">best_values</span><span class="p">),</span> <span class="n">x</span><span class="p">,</span> <span class="n">y_meas</span><span class="p">,</span> <span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y_true</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;lmfit Least-squares fit to noisy data&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">([</span><span class="s1">&#39;Fit&#39;</span><span class="p">,</span> <span class="s1">&#39;Noisy&#39;</span><span class="p">,</span> <span class="s1">&#39;True&#39;</span><span class="p">])</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+    <span class="n">fit</span><span class="o">.</span><span class="n">plot_fit</span><span class="p">()</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+<p>Some Comments:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>The <cite>Model</cite> function in lmfit wraps our peval function and takes care of calculating residuals</p></li>
+<li><p>Instead of providing a list of parameters, we create a set of lmfit <code class="docutils literal notranslate"><span class="pre">Parameters</span></code>. We can either use the method from Model as shown in line 23 or create our own as in lines 27-30</p></li>
+<li><p>Note that each parameter has a name that can be used to index the <code class="docutils literal notranslate"><span class="pre">Parameters</span></code> container and can have properties including <code class="docutils literal notranslate"><span class="pre">min</span></code> and <code class="docutils literal notranslate"><span class="pre">max</span></code>.</p></li>
+<li><p>Another extremely useful feature is the ability to declare a parameter as fixed using the property <code class="docutils literal notranslate"><span class="pre">vary=False</span></code></p></li>
+<li><p>As shown on line 35, fitting is performed using the <cite>Model.fit</cite> function.</p></li>
+<li><p>lmfit Model returns a ModelFit class with methods and attributes to access the fit result</p></li>
+<li><p>Unfortunately, lmfit seems to do less well than directly using scipy.optimize minimizers</p></li>
+</ul>
+</div></blockquote>
+</div>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">pyhints</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../python/python0.html">Python Trivia</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../matplotlib/plt0.html">Matplotlib Trivia</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="numpy0.html">Numpy and Scipy Trivia</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="numpy1.html">Numpy and Scipy Trivia 1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="numpy2.html">Numpy and Scipy Trivia 2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="numpy3.html">Numpy and Scipy Statistics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="numpy4.html">Numpy and Scipy Least Squares Fitting 1</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Numpy and Scipy Least Squares Fitting 2</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../pandas/pandas0.html">Pandas Trivia</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tables/tables0.html">Pytables HDF5 Trivia</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../git/git0.html">Git Trivia</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../grep/grep0.html">Grep Trivia</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sphinx/sphinx0.html">Sphinx Trivia</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tox/tox0.html">Tox Trivia</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+  <li><a href="numpy0.html">Numpy and Scipy Trivia</a><ul>
+      <li>Previous: <a href="numpy4.html" title="previous chapter">Numpy and Scipy Least Squares Fitting 1</a></li>
+      <li>Next: <a href="../pandas/pandas0.html" title="next chapter">Pandas Trivia</a></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2020, Larry Eisenman.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 3.1.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="../_sources/numpy/numpy5.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

@@ -1,0 +1,187 @@
+{
+ "cells": [
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "# Tidy Data\n",
+    "\n",
+    "[Tidy data](https://en.wikipedia.org/wiki/Tidy_data) refers to a specific way of organizing data. Each observation is in a row and there is a column for each variable. This is sometimes called long format. The alternative format is wide format where all of the observations for a unit/group are in separate columns in a single row. Many plotting and analysis tools assume that data is in tidy format.\n",
+    "\n",
+    "Pandas has functions for switching between tidy/long and wide making it easy to organize data whichever way is most convenient."
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "We will create some sample wide data to demonstrate"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 1,
+   "metadata": {
+    "tags": []
+   },
+   "outputs": [
+    {
+     "output_type": "execute_result",
+     "data": {
+      "text/plain": "  Subject  TX1  TX2\n0       a    1    2\n1       b    2    4\n2       c    3    6",
+      "text/html": "<div>\n<style scoped>\n    .dataframe tbody tr th:only-of-type {\n        vertical-align: middle;\n    }\n\n    .dataframe tbody tr th {\n        vertical-align: top;\n    }\n\n    .dataframe thead th {\n        text-align: right;\n    }\n</style>\n<table border=\"1\" class=\"dataframe\">\n  <thead>\n    <tr style=\"text-align: right;\">\n      <th></th>\n      <th>Subject</th>\n      <th>TX1</th>\n      <th>TX2</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <th>0</th>\n      <td>a</td>\n      <td>1</td>\n      <td>2</td>\n    </tr>\n    <tr>\n      <th>1</th>\n      <td>b</td>\n      <td>2</td>\n      <td>4</td>\n    </tr>\n    <tr>\n      <th>2</th>\n      <td>c</td>\n      <td>3</td>\n      <td>6</td>\n    </tr>\n  </tbody>\n</table>\n</div>"
+     },
+     "metadata": {},
+     "execution_count": 1
+    }
+   ],
+   "source": [
+    "import pandas as pd\n",
+    "\n",
+    "df = pd.DataFrame({'Subject': ['a', 'b', 'c'],\n",
+    "                   'TX1': [1, 2, 3],\n",
+    "                   'TX2': [2, 4, 6]}) \n",
+    "df"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "The [melt](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.melt.html) function is used to convert wide to long. `id_vars` are the variables and `value_vars` are the measurements"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 2,
+   "metadata": {},
+   "outputs": [
+    {
+     "output_type": "execute_result",
+     "data": {
+      "text/plain": "  Subject variable  value\n0       a      TX1      1\n1       b      TX1      2\n2       c      TX1      3\n3       a      TX2      2\n4       b      TX2      4\n5       c      TX2      6",
+      "text/html": "<div>\n<style scoped>\n    .dataframe tbody tr th:only-of-type {\n        vertical-align: middle;\n    }\n\n    .dataframe tbody tr th {\n        vertical-align: top;\n    }\n\n    .dataframe thead th {\n        text-align: right;\n    }\n</style>\n<table border=\"1\" class=\"dataframe\">\n  <thead>\n    <tr style=\"text-align: right;\">\n      <th></th>\n      <th>Subject</th>\n      <th>variable</th>\n      <th>value</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <th>0</th>\n      <td>a</td>\n      <td>TX1</td>\n      <td>1</td>\n    </tr>\n    <tr>\n      <th>1</th>\n      <td>b</td>\n      <td>TX1</td>\n      <td>2</td>\n    </tr>\n    <tr>\n      <th>2</th>\n      <td>c</td>\n      <td>TX1</td>\n      <td>3</td>\n    </tr>\n    <tr>\n      <th>3</th>\n      <td>a</td>\n      <td>TX2</td>\n      <td>2</td>\n    </tr>\n    <tr>\n      <th>4</th>\n      <td>b</td>\n      <td>TX2</td>\n      <td>4</td>\n    </tr>\n    <tr>\n      <th>5</th>\n      <td>c</td>\n      <td>TX2</td>\n      <td>6</td>\n    </tr>\n  </tbody>\n</table>\n</div>"
+     },
+     "metadata": {},
+     "execution_count": 2
+    }
+   ],
+   "source": [
+    "pd.melt(df, id_vars=['Subject'], value_vars=['TX1', 'TX2'])"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Variable and value names can be assigned using `var_name` and `value_name`, respectively."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 3,
+   "metadata": {},
+   "outputs": [
+    {
+     "output_type": "execute_result",
+     "data": {
+      "text/plain": "  Subject Treatment  Response\n0       a       TX1         1\n1       b       TX1         2\n2       c       TX1         3\n3       a       TX2         2\n4       b       TX2         4\n5       c       TX2         6",
+      "text/html": "<div>\n<style scoped>\n    .dataframe tbody tr th:only-of-type {\n        vertical-align: middle;\n    }\n\n    .dataframe tbody tr th {\n        vertical-align: top;\n    }\n\n    .dataframe thead th {\n        text-align: right;\n    }\n</style>\n<table border=\"1\" class=\"dataframe\">\n  <thead>\n    <tr style=\"text-align: right;\">\n      <th></th>\n      <th>Subject</th>\n      <th>Treatment</th>\n      <th>Response</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <th>0</th>\n      <td>a</td>\n      <td>TX1</td>\n      <td>1</td>\n    </tr>\n    <tr>\n      <th>1</th>\n      <td>b</td>\n      <td>TX1</td>\n      <td>2</td>\n    </tr>\n    <tr>\n      <th>2</th>\n      <td>c</td>\n      <td>TX1</td>\n      <td>3</td>\n    </tr>\n    <tr>\n      <th>3</th>\n      <td>a</td>\n      <td>TX2</td>\n      <td>2</td>\n    </tr>\n    <tr>\n      <th>4</th>\n      <td>b</td>\n      <td>TX2</td>\n      <td>4</td>\n    </tr>\n    <tr>\n      <th>5</th>\n      <td>c</td>\n      <td>TX2</td>\n      <td>6</td>\n    </tr>\n  </tbody>\n</table>\n</div>"
+     },
+     "metadata": {},
+     "execution_count": 3
+    }
+   ],
+   "source": [
+    "long = pd.melt(df, id_vars=['Subject'], value_vars=['TX1', 'TX2'],\n",
+    "               var_name='Treatment', value_name='Response')\n",
+    "long"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "To go from long to wide, use the [pivot](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.pivot.html) function."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 4,
+   "metadata": {
+    "tags": []
+   },
+   "outputs": [
+    {
+     "output_type": "execute_result",
+     "data": {
+      "text/plain": "Treatment  TX1  TX2\nSubject            \na            1    2\nb            2    4\nc            3    6",
+      "text/html": "<div>\n<style scoped>\n    .dataframe tbody tr th:only-of-type {\n        vertical-align: middle;\n    }\n\n    .dataframe tbody tr th {\n        vertical-align: top;\n    }\n\n    .dataframe thead th {\n        text-align: right;\n    }\n</style>\n<table border=\"1\" class=\"dataframe\">\n  <thead>\n    <tr style=\"text-align: right;\">\n      <th>Treatment</th>\n      <th>TX1</th>\n      <th>TX2</th>\n    </tr>\n    <tr>\n      <th>Subject</th>\n      <th></th>\n      <th></th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <th>a</th>\n      <td>1</td>\n      <td>2</td>\n    </tr>\n    <tr>\n      <th>b</th>\n      <td>2</td>\n      <td>4</td>\n    </tr>\n    <tr>\n      <th>c</th>\n      <td>3</td>\n      <td>6</td>\n    </tr>\n  </tbody>\n</table>\n</div>"
+     },
+     "metadata": {},
+     "execution_count": 4
+    }
+   ],
+   "source": [
+    "wide = pd.pivot(long, index='Subject', columns='Treatment', values='Response')\n",
+    "wide"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "To get the dataframe all the way back to where we started reset the index and remove the columns name"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 5,
+   "metadata": {},
+   "outputs": [
+    {
+     "output_type": "execute_result",
+     "data": {
+      "text/plain": "  Subject  TX1  TX2\n0       a    1    2\n1       b    2    4\n2       c    3    6",
+      "text/html": "<div>\n<style scoped>\n    .dataframe tbody tr th:only-of-type {\n        vertical-align: middle;\n    }\n\n    .dataframe tbody tr th {\n        vertical-align: top;\n    }\n\n    .dataframe thead th {\n        text-align: right;\n    }\n</style>\n<table border=\"1\" class=\"dataframe\">\n  <thead>\n    <tr style=\"text-align: right;\">\n      <th></th>\n      <th>Subject</th>\n      <th>TX1</th>\n      <th>TX2</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <th>0</th>\n      <td>a</td>\n      <td>1</td>\n      <td>2</td>\n    </tr>\n    <tr>\n      <th>1</th>\n      <td>b</td>\n      <td>2</td>\n      <td>4</td>\n    </tr>\n    <tr>\n      <th>2</th>\n      <td>c</td>\n      <td>3</td>\n      <td>6</td>\n    </tr>\n  </tbody>\n</table>\n</div>"
+     },
+     "metadata": {},
+     "execution_count": 5
+    }
+   ],
+   "source": [
+    "wide.reset_index(level=0, inplace=True)\n",
+    "wide.columns.name = None\n",
+    "wide"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": []
+  }
+ ],
+ "metadata": {
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.8.3-final"
+  },
+  "orig_nbformat": 2,
+  "kernelspec": {
+   "name": "python38364bitbasecondaac2b8beaeecf4ca4b7e564826400c54a",
+   "display_name": "Python 3.8.3 64-bit ('base': conda)"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 2
+}

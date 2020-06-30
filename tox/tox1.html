@@ -1,0 +1,153 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trivia 1 &#8212; pyhints 0.1 documentation</title>
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Trivia 2" href="tox2.html" />
+    <link rel="prev" title="Tox Trivia" href="tox0.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="trivia-1">
+<h1>Trivia 1<a class="headerlink" href="#trivia-1" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="configuring-tox">
+<h2>Configuring Tox<a class="headerlink" href="#configuring-tox" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="http://tox.readthedocs.org">Tox</a> is a system for testing in different environments (eg py27 and py34) that uses virtual environments
+to create clean tesing environments with specified software installed. It allows you to test that your
+package installs and runs correctly. It coordinates with different testing software including nose and <a class="reference external" href="http://pytest.org">pytest</a>.</p>
+<p>The first step to use tox is to create a <em>tox.ini</em> file:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># content of: tox.ini , put in same dir as setup.py</span>
+<span class="p">[</span><span class="n">tox</span><span class="p">]</span>
+<span class="n">envlist</span> <span class="o">=</span> <span class="n">py26</span><span class="p">,</span><span class="n">py27</span>
+<span class="p">[</span><span class="n">testenv</span><span class="p">]</span>
+<span class="n">deps</span><span class="o">=</span>
+    <span class="n">pytest</span>       <span class="c1"># install pytest in the venvs</span>
+    <span class="c1">#-rrequirements.txt      # uncomment to also install packages in requirements.txt</span>
+<span class="n">commands</span><span class="o">=</span><span class="n">py</span><span class="o">.</span><span class="n">test</span>  <span class="c1"># or &#39;nosetests&#39; or ...</span>
+<span class="n">changedir</span><span class="o">=</span><span class="n">test</span><span class="o">/</span><span class="n">directory</span>     <span class="c1"># run tests in this directory rather than at the top level</span>
+<span class="n">sitepackages</span><span class="o">=</span><span class="kc">True</span>            <span class="c1"># use globally installed packages</span>
+</pre></div>
+</div>
+<p>Then from a terminal in the top level package directory run the command:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">tox</span>
+</pre></div>
+</div>
+<p>This will create virtual environments, load package dependencies, install the package and run all tests. In my hands on windows, tox doesn’t work well with dependencies like numpy since it cannot be pip installed. My solution was to set sitepackages to True to use the globally installed packages.</p>
+<p>More suggestions about how to use tools for open source development from <a class="reference external" href="http://www.jeffknupp.com/blog/2013/08/16/open-sourcing-a-python-project-the-right-way/">here</a>.</p>
+<p>Here is a series of <a class="reference external" href="http://ilovesymposia.com/2014/10/27/continuous-integration-in-python-7-some-helper-tools-and-final-thoughts/">blog posts about testing and code coverage</a>.</p>
+</div>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">pyhints</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../python/python0.html">Python Trivia</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../matplotlib/plt0.html">Matplotlib Trivia</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../numpy/numpy0.html">Numpy and Scipy Trivia</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pandas/pandas0.html">Pandas Trivia</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tables/tables0.html">Pytables HDF5 Trivia</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../git/git0.html">Git Trivia</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../grep/grep0.html">Grep Trivia</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sphinx/sphinx0.html">Sphinx Trivia</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="tox0.html">Tox Trivia</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Trivia 1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tox2.html">Trivia 2</a></li>
+</ul>
+</li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+  <li><a href="tox0.html">Tox Trivia</a><ul>
+      <li>Previous: <a href="tox0.html" title="previous chapter">Tox Trivia</a></li>
+      <li>Next: <a href="tox2.html" title="next chapter">Trivia 2</a></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2020, Larry Eisenman.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 3.1.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="../_sources/tox/tox1.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

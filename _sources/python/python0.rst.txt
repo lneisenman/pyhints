@@ -1,0 +1,9 @@
+=============
+Python Trivia
+=============
+
+.. toctree::
+   :maxdepth: 2
+
+   Python Trivia <python1>
+   Python Trivia 2 <python2>
