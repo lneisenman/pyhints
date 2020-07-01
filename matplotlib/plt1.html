@@ -320,8 +320,7 @@ div.rendered_html tbody tr:hover {
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/matplotlib_plt1_7_0.png" src="../_images/matplotlib_plt1_7_0.png" />
-</div>
+<img alt="../_images/matplotlib_plt1_7_0.svg" src="../_images/matplotlib_plt1_7_0.svg" /></div>
 </div>
 </div>
 <div class="section" id="Multibar-graphs">
@@ -390,8 +389,7 @@ div.rendered_html tbody tr:hover {
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/matplotlib_plt1_11_0.png" src="../_images/matplotlib_plt1_11_0.png" />
-</div>
+<img alt="../_images/matplotlib_plt1_11_0.svg" src="../_images/matplotlib_plt1_11_0.svg" /></div>
 </div>
 </div>
 <div class="section" id="Bar-graphs-with-Pandas">
@@ -415,15 +413,14 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-&lt;matplotlib.axes._subplots.AxesSubplot at 0x8a73400&gt;
+&lt;matplotlib.axes._subplots.AxesSubplot at 0x8cb90a0&gt;
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/matplotlib_plt1_13_1.png" src="../_images/matplotlib_plt1_13_1.png" />
-</div>
+<img alt="../_images/matplotlib_plt1_13_1.svg" src="../_images/matplotlib_plt1_13_1.svg" /></div>
 </div>
 </div>
 <div class="section" id="Bar-graphs-with-Seaborn">
@@ -437,24 +434,227 @@ div.rendered_html tbody tr:hover {
 <span></span><span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
 
 <span class="n">df2</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">wide_to_long</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(),</span> <span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">],</span> <span class="n">i</span><span class="o">=</span><span class="s1">&#39;index&#39;</span><span class="p">,</span> <span class="n">j</span><span class="o">=</span><span class="s1">&#39;dataset&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
-<span class="n">sns</span><span class="o">.</span><span class="n">barplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;index&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;data&#39;</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s1">&#39;dataset&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">df2</span><span class="p">)</span>
+<span class="n">df2</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;index&#39;</span><span class="p">:</span> <span class="s1">&#39;position&#39;</span><span class="p">},</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">df2</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>position</th>
+      <th>dataset</th>
+      <th>data</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>left</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>center</td>
+      <td>1</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>right</td>
+      <td>1</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>crazy</td>
+      <td>1</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>left</td>
+      <td>2</td>
+      <td>2</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">sns</span><span class="o">.</span><span class="n">barplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;position&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;data&#39;</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s1">&#39;dataset&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">df2</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="nboutput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-&lt;matplotlib.axes._subplots.AxesSubplot at 0x9975dd8&gt;
+&lt;matplotlib.axes._subplots.AxesSubplot at 0xac1c3a0&gt;
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/matplotlib_plt1_15_1.png" src="../_images/matplotlib_plt1_15_1.png" />
+<img alt="../_images/matplotlib_plt1_16_1.svg" src="../_images/matplotlib_plt1_16_1.svg" /></div>
+</div>
+</div>
+<div class="section" id="Bar-Graphs-with-Plotnine">
+<h1>Bar Graphs with Plotnine<a class="headerlink" href="#Bar-Graphs-with-Plotnine" title="Permalink to this headline">¶</a></h1>
+<p><a class="reference external" href="https://plotnine.readthedocs.io/en/stable/">Plotnine</a> is a python implementation of <a class="reference external" href="https://ggplot2.tidyverse.org/">ggplot2</a> from <a class="reference external" href="https://www.r-project.org/">R</a></p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">plotnine</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="n">df2</span><span class="o">.</span><span class="n">dataset</span> <span class="o">=</span> <span class="n">df2</span><span class="o">.</span><span class="n">dataset</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s2">&quot;category&quot;</span><span class="p">)</span> <span class="c1"># plotnine needs this to be categorical</span>
+<span class="n">categories</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;left&#39;</span><span class="p">,</span> <span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="s1">&#39;right&#39;</span><span class="p">,</span> <span class="s1">&#39;crazy&#39;</span><span class="p">]</span>
+<span class="n">position_cat</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Categorical</span><span class="p">(</span><span class="n">df2</span><span class="p">[</span><span class="s1">&#39;position&#39;</span><span class="p">],</span> <span class="n">categories</span><span class="o">=</span><span class="n">categories</span><span class="p">)</span> <span class="c1"># This goofiness is because Plotnine will plot categories alphabetically</span>
+<span class="n">df2</span><span class="p">[</span><span class="s1">&#39;position&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">position_cat</span>                                        <span class="c1"># unless we specify the order</span>
+<span class="n">ymin</span> <span class="o">=</span> <span class="n">df2</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">values</span> <span class="o">-</span> <span class="mf">0.5</span>
+<span class="n">ymax</span> <span class="o">=</span> <span class="n">ymin</span> <span class="o">+</span> <span class="mi">1</span>
+<span class="p">(</span><span class="n">ggplot</span><span class="p">(</span><span class="n">df2</span><span class="p">,</span> <span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;position&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;data&#39;</span><span class="p">,</span> <span class="n">fill</span><span class="o">=</span><span class="s1">&#39;dataset&#39;</span><span class="p">))</span>
+<span class="o">+</span> <span class="n">geom_errorbar</span><span class="p">(</span><span class="n">aes</span><span class="p">(</span><span class="n">ymin</span><span class="o">=</span><span class="n">ymin</span><span class="p">,</span> <span class="n">ymax</span><span class="o">=</span><span class="n">ymax</span><span class="p">),</span> <span class="n">position</span><span class="o">=</span><span class="n">position_dodge</span><span class="p">(</span><span class="mf">0.9</span><span class="p">))</span>
+<span class="o">+</span> <span class="n">geom_col</span><span class="p">(</span><span class="n">position</span><span class="o">=</span><span class="s1">&#39;dodge&#39;</span><span class="p">))</span> <span class="c1"># hide lower error bars by drawing error bars first and then drawing bars</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/matplotlib_plt1_18_0.svg" src="../_images/matplotlib_plt1_18_0.svg" /></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+&lt;ggplot: (9278552)&gt;
+</pre></div></div>
+</div>
+</div>
+<div class="section" id="Bar-Graphs-with-Altair">
+<h1>Bar Graphs with Altair<a class="headerlink" href="#Bar-Graphs-with-Altair" title="Permalink to this headline">¶</a></h1>
+<p><a class="reference external" href="https://altair-viz.github.io/">Altair</a> is a declarative statistical visualization library based on <a class="reference external" href="http://vega.github.io/vega-lite/">Vega-Lite</a>, a “grammar” of interactive graphics for web display.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">altair</span> <span class="k">as</span> <span class="nn">alt</span>
+
+<span class="n">df2</span><span class="p">[</span><span class="s1">&#39;ymin&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">ymin</span>
+<span class="n">df2</span><span class="p">[</span><span class="s1">&#39;ymax&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">ymax</span>
+
+<span class="n">bars</span> <span class="o">=</span> <span class="n">alt</span><span class="o">.</span><span class="n">Chart</span><span class="p">()</span><span class="o">.</span><span class="n">mark_bar</span><span class="p">()</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span>
+    <span class="n">x</span><span class="o">=</span><span class="n">alt</span><span class="o">.</span><span class="n">X</span><span class="p">(</span><span class="s1">&#39;dataset&#39;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="kc">None</span><span class="p">),</span>
+    <span class="n">y</span><span class="o">=</span><span class="s1">&#39;data&#39;</span><span class="p">,</span>
+    <span class="n">color</span><span class="o">=</span><span class="s1">&#39;dataset&#39;</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="n">errors</span> <span class="o">=</span> <span class="n">alt</span><span class="o">.</span><span class="n">Chart</span><span class="p">()</span><span class="o">.</span><span class="n">mark_errorbar</span><span class="p">()</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;dataset&#39;</span><span class="p">,</span>
+    <span class="n">y</span><span class="o">=</span><span class="n">alt</span><span class="o">.</span><span class="n">Y</span><span class="p">(</span><span class="s1">&#39;ymin&#39;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s1">&#39;data&#39;</span><span class="p">),</span> <span class="n">y2</span><span class="o">=</span><span class="s1">&#39;ymax&#39;</span><span class="p">)</span>      <span class="c1"># need to rename y axis to data from default of ymin</span>
+
+<span class="n">alt</span><span class="o">.</span><span class="n">layer</span><span class="p">(</span><span class="n">errors</span><span class="p">,</span> <span class="n">bars</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">df2</span><span class="p">)</span><span class="o">.</span><span class="n">facet</span><span class="p">(</span>           <span class="c1"># Drawing the error bars first hides the lower part</span>
+    <span class="n">column</span><span class="o">=</span><span class="n">alt</span><span class="o">.</span><span class="n">Column</span><span class="p">(</span><span class="s1">&#39;position&#39;</span><span class="p">,</span> <span class="n">sort</span><span class="o">=</span><span class="n">categories</span><span class="p">,</span> <span class="c1"># Altair also sorts alphabetically by default</span>
+        <span class="n">header</span><span class="o">=</span><span class="n">alt</span><span class="o">.</span><span class="n">Header</span><span class="p">(</span><span class="n">labelOrient</span><span class="o">=</span><span class="s1">&#39;bottom&#39;</span><span class="p">,</span> <span class="n">titleOrient</span><span class="o">=</span><span class="s1">&#39;bottom&#39;</span><span class="p">)))</span><span class="o">.</span><span class="n">configure_axis</span><span class="p">(</span><span class="n">grid</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">configure_view</span><span class="p">(</span><span class="n">strokeOpacity</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div id="altair-viz-e714a46ca1ab4e80bd52a9afc6c642c5"></div>
+<script type="text/javascript">
+  (function(spec, embedOpt){
+    let outputDiv = document.currentScript.previousElementSibling;
+    if (outputDiv.id !== "altair-viz-e714a46ca1ab4e80bd52a9afc6c642c5") {
+      outputDiv = document.getElementById("altair-viz-e714a46ca1ab4e80bd52a9afc6c642c5");
+    }
+    const paths = {
+      "vega": "https://cdn.jsdelivr.net/npm//vega@5?noext",
+      "vega-lib": "https://cdn.jsdelivr.net/npm//vega-lib?noext",
+      "vega-lite": "https://cdn.jsdelivr.net/npm//vega-lite@4.8.1?noext",
+      "vega-embed": "https://cdn.jsdelivr.net/npm//vega-embed@6?noext",
+    };
+
+    function loadScript(lib) {
+      return new Promise(function(resolve, reject) {
+        var s = document.createElement('script');
+        s.src = paths[lib];
+        s.async = true;
+        s.onload = () => resolve(paths[lib]);
+        s.onerror = () => reject(`Error loading script: ${paths[lib]}`);
+        document.getElementsByTagName("head")[0].appendChild(s);
+      });
+    }
+
+    function showError(err) {
+      outputDiv.innerHTML = `<div class="error" style="color:red;">${err}</div>`;
+      throw err;
+    }
+
+    function displayChart(vegaEmbed) {
+      vegaEmbed(outputDiv, spec, embedOpt)
+        .catch(err => showError(`Javascript Error: ${err.message}<br>This usually means there's a typo in your chart specification. See the javascript console for the full traceback.`));
+    }
+
+    if(typeof define === "function" && define.amd) {
+      requirejs.config({paths});
+      require(["vega-embed"], displayChart, err => showError(`Error loading script: ${err.message}`));
+    } else if (typeof vegaEmbed === "function") {
+      displayChart(vegaEmbed);
+    } else {
+      loadScript("vega")
+        .then(() => loadScript("vega-lite"))
+        .then(() => loadScript("vega-embed"))
+        .catch(showError)
+        .then(() => displayChart(vegaEmbed));
+    }
+  })({"config": {"view": {"continuousWidth": 400, "continuousHeight": 300, "strokeOpacity": 0}, "axis": {"grid": false}}, "data": {"name": "data-12c8fe551b0255a0fc2cf88cfb34c7bc"}, "facet": {"column": {"type": "nominal", "field": "position", "header": {"labelOrient": "bottom", "titleOrient": "bottom"}, "sort": ["left", "center", "right", "crazy"]}}, "spec": {"layer": [{"mark": "errorbar", "encoding": {"x": {"type": "nominal", "field": "dataset"}, "y": {"type": "quantitative", "field": "ymin", "title": "data"}, "y2": {"field": "ymax"}}}, {"mark": "bar", "encoding": {"color": {"type": "nominal", "field": "dataset"}, "x": {"type": "nominal", "axis": null, "field": "dataset", "title": ""}, "y": {"type": "quantitative", "field": "data"}}}]}, "$schema": "https://vega.github.io/schema/vega-lite/v4.8.1.json", "datasets": {"data-12c8fe551b0255a0fc2cf88cfb34c7bc": [{"position": "left", "dataset": 1, "data": 1, "ymin": 0.5, "ymax": 1.5}, {"position": "center", "dataset": 1, "data": 2, "ymin": 1.5, "ymax": 2.5}, {"position": "right", "dataset": 1, "data": 3, "ymin": 2.5, "ymax": 3.5}, {"position": "crazy", "dataset": 1, "data": 4, "ymin": 3.5, "ymax": 4.5}, {"position": "left", "dataset": 2, "data": 2, "ymin": 1.5, "ymax": 2.5}, {"position": "center", "dataset": 2, "data": 3, "ymin": 2.5, "ymax": 3.5}, {"position": "right", "dataset": 2, "data": 4, "ymin": 3.5, "ymax": 4.5}, {"position": "crazy", "dataset": 2, "data": 5, "ymin": 4.5, "ymax": 5.5}, {"position": "left", "dataset": 3, "data": 3, "ymin": 2.5, "ymax": 3.5}, {"position": "center", "dataset": 3, "data": 4, "ymin": 3.5, "ymax": 4.5}, {"position": "right", "dataset": 3, "data": 5, "ymin": 4.5, "ymax": 5.5}, {"position": "crazy", "dataset": 3, "data": 6, "ymin": 5.5, "ymax": 6.5}, {"position": "left", "dataset": 4, "data": 4, "ymin": 3.5, "ymax": 4.5}, {"position": "center", "dataset": 4, "data": 5, "ymin": 4.5, "ymax": 5.5}, {"position": "right", "dataset": 4, "data": 6, "ymin": 5.5, "ymax": 6.5}, {"position": "crazy", "dataset": 4, "data": 7, "ymin": 6.5, "ymax": 7.5}, {"position": "left", "dataset": 5, "data": 5, "ymin": 4.5, "ymax": 5.5}, {"position": "center", "dataset": 5, "data": 6, "ymin": 5.5, "ymax": 6.5}, {"position": "right", "dataset": 5, "data": 7, "ymin": 6.5, "ymax": 7.5}, {"position": "crazy", "dataset": 5, "data": 8, "ymin": 7.5, "ymax": 8.5}]}}, {"mode": "vega-lite"});
+</script></div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span>
+</pre></div>
 </div>
 </div>
 </div>
@@ -486,6 +686,8 @@ div.rendered_html tbody tr:hover {
 <li class="toctree-l2"><a class="reference internal" href="#Multibar-graphs">Multibar graphs</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#Bar-graphs-with-Pandas">Bar graphs with Pandas</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#Bar-graphs-with-Seaborn">Bar graphs with Seaborn</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Bar-Graphs-with-Plotnine">Bar Graphs with Plotnine</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Bar-Graphs-with-Altair">Bar Graphs with Altair</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../numpy/numpy0.html">Numpy and Scipy Trivia</a></li>
